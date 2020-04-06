@@ -12,7 +12,7 @@ mysqlclient
 wagtail-table-block
 requests==2.18.1
 
-nltk==3.2.4
+nltk==3.4.5
 numpy==1.13.3
 pandas==0.20.3
 RISparser==0.4.2
