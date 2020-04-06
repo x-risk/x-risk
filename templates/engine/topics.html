@@ -1,0 +1,49 @@
+{% extends "core/page.html" %}
+{% load cmsapp_tags %}
+
+{% block title_head %}
+{{state }} publications - {{ search_topic.topic }}
+{% endblock %}
+
+{% block breadcrumb %}
+{% expr state + " publications - " + search_topic.topic as title %}
+{% include 'core/breadcrumb.html' with title_body_content=title %}
+{% endblock %}
+
+{% block body %}
+
+<div>
+
+  <h2 class="text-info">{{state }} publications - {{ search_topic.topic }}</h2>
+
+  {{ sidebar_data }}
+
+  {% for publication in publications %}
+
+    {% include 'engine/publication_list_item.html' with slug=search_topic.slug publication=publication %}
+
+  {% empty %}
+
+    <h3>No publications</h3>
+
+  {% endfor %}
+
+</div>
+
+<div class="my-4"></div>
+
+  {% if publications.has_other_pages %}
+
+  {% include 'core/paginator.html' with publications=publications %}
+
+  {% endif %}
+
+{% endblock %}
+
+{% block sidebar %}
+  {% if user.is_authenticated %}
+    {% include 'engine/sidebar/assessment_sidebar.html' %}
+  {% else %}
+    {% include 'engine/sidebar/bibliography_sidebar.html' %}
+  {% endif %}
+{% endblock %}

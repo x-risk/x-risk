@@ -1,0 +1,74 @@
+{% extends "core/page.html" %}
+{% load widget_tweaks %}
+
+{% block title_head %}
+Login
+{% endblock %}
+
+{% block title_body %}
+Login
+{% endblock %}
+
+{% block supermain %}
+
+<div class="page-header header-filter" style="background-image: linear-gradient(to bottom, rgba(245, 246, 252, 0.52), rgba(117, 19, 93, 0.73)),url('/static/assets/hero-pattern.svg'); background-size: cover; background-position: top center;background: linear-gradient(0deg,rgba(24,93,207,0),rgba(24,93,207,.82)),linear-gradient(269.12deg,rgba(24,93,207,0),rgba(24,93,207,0) 13.1%,#185ecf7c);">
+	<div class="container">
+      <div class="row">
+        <div class="col-lg-4 col-md-6 col-sm-8 ml-auto mr-auto">
+
+          <form spellcheck="false" autocomplete="off" class="form" method="post" action="{% url 'login' %}?next={{ request.GET.next }}">
+
+            {% csrf_token %}
+
+            <div class="card card-login card-hidden">
+              <div class="card-body ">
+                <h2 class="text-center">Login</h2>
+                <p class="my-4 text-center">To register with X-Risk, <a class="text-info" href="{% url 'signup' %}">click here</a></p>
+                <p class="card-description text-center">
+                  {% if form.errors %}
+                    <div class="text-black text-center">        
+                          Your username and/or password did not match our records, or you do not have permission to log in.</span> If you unsubscribed, please <a href="/contact">contact us</a> to reactivate your account.
+                    </div>
+                  {% endif %}
+                </p>		
+
+                <span class="bmd-form-group">
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">
+                        <i class="material-icons">face</i>
+                      </span>
+	          				</div>
+					          {% render_field form.username class="form-control" autocomplete="off" placeholder="Username..." %}
+                  </div>
+                </span>
+                <span class="bmd-form-group">
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">
+                        <i class="material-icons">lock_outline</i>
+                      </span>
+          					</div>
+					          {% render_field form.password class="form-control" autocomplete="off" placeholder="Password..." %}            		
+                  </div>
+                </span>
+			        </div>
+
+              <div class="card-footer text-center" style="display:block;">
+                <div class="bmd-form-group">
+                  <input type="submit" value="Log in" class="btn btn-info btn-round"/>
+                  <a href="{% url 'password_reset' %}" class="btn btn-danger btn-round">Reset password</a>
+                </div>
+              </div>
+	  
+            </div>
+          </form>
+        </div>
+      </div>
+  </div>
+	{% include 'core/footer.html' %}	
+</div>
+
+
+{% endblock %}
+

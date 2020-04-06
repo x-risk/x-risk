@@ -1,0 +1,46 @@
+{% extends "core/base.html" %}
+{% load wagtailimages_tags wagtailcore_tags cmsapp_tags %}
+
+{% block content %}
+
+{% captureas title_body_content %}{% spaceless %}{% block title_body %}{% endblock %}{% endspaceless %}{% endcaptureas %}
+
+<div class="container">
+    <div class="row">
+    </div>
+    <div class="row">
+        <div class="col-md-8 text-left">
+
+            <div class="col-12">
+
+                {% block breadcrumb %}
+                {% include 'core/breadcrumb.html' %}
+                {% endblock %}
+                
+                {% if title_body_content %}
+                <h1 class="text-info mb-4">
+                        {{ title_body_content }}
+                </h1>
+                {% endif %}
+
+                {% block body %}
+                {% endblock %}
+
+            </div>
+
+        </div>
+        <div class="col-md-4 text-left">
+            {% block sidebar %}
+                {% include 'engine/sidebar/bibliography_sidebar.html' %}
+            {% endblock %}
+        </div>            
+    </div>
+</div>
+
+{% endblock %}
+
+{% block local_footer %}
+    {% block footer %}
+        {% include 'core/footer.html' %}
+    {% endblock %}
+{% endblock %}

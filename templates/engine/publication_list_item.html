@@ -1,0 +1,19 @@
+<!-- Item-specific template for displaying publication in a list of publications in a general view -->
+
+<h3>{{ publication.title|default:'[title not available]'|safe }}</h3>
+<h6 class="card-subtitle mb-2 text-muted">{{ publication.year|default:'[year not available]'|safe }}</h6>
+
+<p>
+  {{ publication.author|default:'[authors not available]'|safe }} ({{ publication.year|default:'[year not available]'|safe }})
+  {{ publication.title|default:'[title not available]'|safe }}, in <span class="italic">{{ publication.journal|default:'[journal not available]'|safe }}</span> 
+  {{ publication.volume|default:'[volume not available]'|safe }}, {{ publication.pages|default:'[pages not available]'|safe }}.
+</p>
+
+{% if user.is_authenticated %}
+<a href="{% url 'assessments' slug=slug pk=publication.pk %}">Assess this publication &rarr;</a>
+{% else %}
+    Search for the full text: <a target="_blank" href="http://www.google.com/search?q={{ publication.google_string }}">Google</a>
+    {% if publication.doi != 'NA' and publication.doi != '' %}
+    | <a target="_blank" href="http://dx.doi.org/{{ publication.doi }}">DOI</a>
+    {% endif %}
+{% endif %}

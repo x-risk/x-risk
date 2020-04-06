@@ -1,0 +1,73 @@
+{% load cmsapp_tags %}
+
+<div style="overflow-x:auto;">
+    <ul class="pagination pagination">
+   
+       {% expr 11 as pagerange %}
+       {% expr round((pagerange - 1) / 2) as pagespread %}
+     {% expr publications.paginator.num_pages as num_pages %}
+   
+     {% if num_pages <= pagerange %}
+           {% for i in num_pages|times %}
+       {% expr (i + 1) as currentpage %}
+                       <li class="page-item {% if currentpage == publications.number %}active{% endif %}">
+                               <a class="page-link" href="?q={{ query }}&amp;page={{ currentpage }}">{{ currentpage }}</a>
+               </li>
+           {% endfor %}
+       {% else %}
+   
+           {% expr (publications.number - pagespread) as pagestart %}
+           {% expr (publications.number + pagespread) as pageend %}
+           
+           {% if pagestart < 1 %}
+               {% expr (pageend + 1 - pagestart) as pageend %}
+               {% expr 1 as pagestart %}
+               {% if pageend > num_pages %}
+                   {% expr num_pages as pageend}
+               {% endif %}		
+           {% elif pageend > num_pages %}
+               {% expr (pagestart - (pageend - num_pages)) as pagestart %}
+               {% expr num_pages as pageend %}
+               {% if pagestart < 1 %}
+                   {% expr 1 as pagestart %}
+               {% endif %}
+           {% endif %}
+   
+           {% expr 0 as skipforward %}
+                   {% expr (pagerange - 2) as penultimate %}
+           {% for i in pagerange|times %}
+               {% if skipforward == 0 %}
+                   {% expr (i + pagestart) as currentpage %}
+                   {% expr (pagerange - 2) as penultimate %}
+                   {% if currentpage > 1 and i == 0 %}
+                       {% expr (currentpage + 1) as nextpage %}
+                       {% expr 1 as skipforward %}
+                                   <li class="page-item {% if currentpage == publications.number %}active{% endif %}">
+                                           <a class="page-link" href="?q={{ query }}&amp;page=1">1</a>
+                                   </li>
+                                           <li class="page-item {% if currentpage == publications.number %}active{% endif %}">
+                                                   <a class="page-link" href="?q={{ query }}&amp;page={{ nextpage }}">...</a>
+                                           </li>
+                   {% elif i == penultimate and pageend < num_pages %}
+                                           <li class="page-item {% if currentpage == publications.number %}active{% endif %}">
+                                                   <a class="page-link" href="?q={{ query }}&amp;page={{ currentpage }}">...</a>
+                                           </li>
+                                           <li class="page-item {% if currentpage == publications.number %}active{% endif %}">
+                                                   <a class="page-link" href="?q={{ query }}&amp;page={{ num_pages }}">{{ num_pages }}</a>
+                                           </li>  
+                       {% expr 1 as skipforward %}
+                   {% else %}
+                                   <li class="page-item {% if currentpage == publications.number %}active{% endif %}">
+                                              <a class="page-link" href="?q={{ query }}&amp;page={{ currentpage }}">{{ currentpage }}</a>
+                                   </li>
+                   {% endif %}
+               {% else %}
+                   {% expr 0 as skipforward %}
+               {% endif %}
+   
+           {% endfor %}
+   
+       {% endif %}
+   
+    </ul>
+</div>

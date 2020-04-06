@@ -1,0 +1,29 @@
+{% load cmsapp_tags %}
+
+<!-- Subject-specific list of latest randomized publications -->
+
+{% get_latest_publications slug show_number as latest_publications %}
+
+{% for publication in latest_publications.publications %}
+
+    <!--
+    <div class="float-right ml-4">
+        <a class="badge badge-pill badge-light text-primary" href="{% url 'assessments' slug=slug pk=publication.pk %}"><b>Assess article</b></a> 
+    </div>      
+    -->
+
+    <h3 class="mt-4">{{ publication.title|default:'[title not available]'|safe }}</h3>
+    
+    <p class="text-muted">
+      {{ publication.author|default:'[authors not available]'|safe }} ({{ publication.year|default:'[year not available]'|safe }})
+      {{ publication.title|default:'[title not available]'|safe }}, in <span class="italic">{{ publication.journal|default:'[journal not available]'|safe }}</span> 
+      {{ publication.volume|default:'[volume not available]'|safe }}, {{ publication.pages|default:'[pages not available]'|safe }}.
+    </p>
+  
+    {% if show_abstract %}
+    <p>{{ publication.abstract }}</p>
+    {% endif %}
+
+    <a href="{% url 'assessments' slug=slug pk=publication.pk %}">Assess article →</a> 
+     
+{% endfor %}

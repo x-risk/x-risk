@@ -1,0 +1,154 @@
+<!--
+=========================================================
+Material Kit - v2.0.7
+=========================================================
+
+Product Page: https://www.creative-tim.com/product/material-kit
+Copyright 2020 Creative Tim (https://www.creative-tim.com/)
+
+Coded by Creative Tim
+
+=========================================================
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="shortcut icon" type="image/png" href="/static/favicon.ico" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>
+      {% block title_head %}{{ self.title }}{% if self.description %} | {{ self.description }}{% endif %}{% endblock %} | X-Risk Research Network | www.x-risk.net
+    </title>
+    <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
+    <!--     Fonts and icons     -->
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+    <!-- CSS Files -->
+    <link href="/static/material-kit/css/material-kit.css" rel="stylesheet" />
+    <link href="/static/material-kit/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />
+    <link href="/static/css/custom.css" rel="stylesheet" />
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-162683806-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-162683806-1');
+    </script>
+
+  </head>
+
+  {% load menu_tags cmsapp_tags %}
+  {% captureas pagetype %}{% spaceless %}{{ self.content_type }}{% endspaceless %}{% endcaptureas %}
+
+  {% expr (request.path == '/login/') as islogin %}
+  {% expr (request.path == '/application/signup/') as issignup %}
+  {% expr (pagetype == 'Home page') as ishomepage %}
+  {% expr (ishomepage or islogin or issignup) as fixnavbar %}
+  <body class="{% if islogin %}signup-page loginspecial-page{% elif issignup %}signup-page{% else %}sections-page{% endif %} sidebar-collapse">
+
+  <body class="landing-page sidebar-collapse">
+
+    {% if fixnavbar %}
+    <nav class="navbar navbar-transparent navbar-color-on-scroll fixed-top navbar-expand-lg" color-on-scroll="10" id="sectionsNav">
+    {% else %}
+      <nav class="navbar navbar-expand-lg">
+    {% endif %}
+
+      <div class="container">
+        <div class="navbar-translate">
+          <a class="navbar-brand" style="font-size:28px;" href="/"><img style="position:relative;top:-2px;" id="logo" width="24" height="24" src="/static/logo_small_highres.png" alt="x-risk logo"> RISK</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="navbar-toggler-icon"></span>
+            <span class="navbar-toggler-icon"></span>
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+
+        <div class="collapse navbar-collapse">
+          {% main_menu max_levels=3 template="core/menus/main_menu_dropdown.html" sub_menu_template="core/menus/sub_menu_dropdown.html" %}
+        </div>
+      </div>
+
+    </nav>
+
+    {% block supermain %}
+
+    <div class="main">
+      <div>
+        {% block carousel %}
+        {% endblock %}
+      </div>
+
+      <div class="container maincontent">
+
+          {% block content %}          
+          {% endblock %}
+
+      </div>
+
+      {% block local_footer %}
+      {% block footer %}
+          {% include 'core/footer.html' %}
+      {% endblock %}
+      {% endblock %}
+      
+    </div>
+
+    {% endblock %}  
+
+    <!--   Core JS Files   -->
+    <script src="/static/material-kit/js/core/jquery.min.js" type="text/javascript"></script>
+    <script src="/static/material-kit/js/core/popper.min.js" type="text/javascript"></script>
+    <script src="/static/material-kit/js/core/bootstrap-material-design.min.js" type="text/javascript"></script>
+    <script src="/static/material-kit/js/plugins/moment.min.js"></script>
+    <!--	Plugin for the Datepicker, full documentation here: https://github.com/Eonasdan/bootstrap-datetimepicker -->
+    <script src="/static/material-kit/js/plugins/bootstrap-datetimepicker.js" type="text/javascript"></script>
+    <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
+    <script src="/static/material-kit/js/plugins/nouislider.min.js" type="text/javascript"></script>
+    <!--	Plugin for Select, full documentation here: http://silviomoreto.github.io/bootstrap-select -->
+    <script src="/static/material-kit/bootstrap-select/js/bootstrap-select.js" type="text/javascript"></script>
+    <!-- Control Center for Material Kit: parallax effects, scripts for the example pages etc -->
+    <script src="/static/material-kit/js/material-kit.js?v=2.0.7" type="text/javascript"></script>
+    <script>
+
+      function updateNavbar() {
+        if ($(document).scrollTop() > 10) {
+          $('#main-search-box').css('color', 'black');
+        }
+        else
+        {
+          var width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
+          if (width <= 991) {
+            $('#main-search-box').css('color', 'black');
+          } else {
+            $('#main-search-box').css('color', 'white');
+          }
+        }
+      }
+
+      $( window ).resize(function() {
+        updateNavbar();
+      });
+
+      $(document).ready(function(){
+
+          {% if fixnavbar %}
+          updateNavbar();
+          $(document).on('scroll', function (e) {updateNavbar();})    
+          {% endif %}
+
+          $('.form-control').on('keydown', function() {
+              $(this).parent().children('.hide-on-click').hide();
+          });
+          
+      });      
+
+    </script>
+
+  </body>
+</html>

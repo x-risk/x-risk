@@ -1,0 +1,66 @@
+{% extends 'core/page.html' %}
+{% load cmsapp_tags %}
+
+<!-- Account homepage that user will always be sent to -->
+
+{% block title_head %}
+Assessment Home
+{% endblock %}
+
+{% block breadcrumb %}
+<h6>
+    <a class="font-weight-normal text-info"><i class="material-icons text-info">home</i> Account Home</a>
+</h6>
+{% endblock %}
+
+{% block body %}
+
+<h1 class="text-info">Your Account</h1>
+
+<div class="row">
+    <div class="col-6">
+        <h3 class="text-info"><i class="material-icons mdi-36px text-info">assessment</i> Scoreboard</h3>
+        <p>See how you compare with other assessors</p>
+        <a class="text-info" href="{% url 'scoreboard' %}">View scoreboard &rarr;</a>
+    </div>
+
+    <div class="col-6 mb-4">
+        <h3 class="text-info"><i class="material-icons mdi-36px text-info">account_circle</i> Modify Profile</h3>
+        <p>Change personal details or topic selection</p>        
+        <a class="text-info" href="{% url 'profile' %}">Modify profile &rarr;</a>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col">
+        <h3 class="text-info"><i class="fa fa-book text-info"></i> Assessing publications</h3>
+        <p>If you are interested in assessing publications for our manually-curated bibliography, please read the <a href="/instructions"><strong>Assessment Instructions</strong></a> and <a href="/methods"><strong>Inclusion Criteria</strong></a> carefully.</p> 
+        <p>Click the <i class="material-icons align-middle text-info">play_circle_filled</i>  
+          button next to a bibliography to start or revisit the assessment process.</p>
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <th class="text-left">Bibliography</th>
+                    <th width="50%" class="text-center">Progress</th>
+                    <th class="text-center">Make Assessment</th>
+                </thead>
+
+                {% get_assessment_data "existential-risk" as assessment_data %}
+                {% include 'engine/home_topic_item.html' with assessment_data=assessment_data %}
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col">
+
+        <h3 class="text-info"><i class="material-icons mdi-36px text-info">update</i> <b>Existential Risk</b> Latest Publications</h3>
+        <p>A random selection of recently-added publications</p>
+            
+        {% include 'engine/home_latest_publications_item.html' with slug="existential-risk" show_number=5 %}
+
+    </div>
+</div>
+
+{% endblock %}

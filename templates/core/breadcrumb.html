@@ -1,0 +1,6 @@
+{% if user.is_authenticated %}
+<h6>
+    <a href="{% url 'home' %}"><i class="material-icons text-info">home</i> <strong>Account Home</strong></a> \ 
+    <a class="font-weight-normal text-info"> {{ title_body_content }}</a>
+</h6>                
+{% endif %}

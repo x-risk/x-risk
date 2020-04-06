@@ -1,0 +1,121 @@
+{% extends "core/page.html" %}
+{% load widget_tweaks cmsapp_tags %}
+
+{% block title_head %}
+Sign Up
+{% endblock %}
+
+{% block title_body %}
+Join the Network
+{% endblock %}
+
+{% block supermain %}
+
+<div class="page-header header-filter" style="background-image: linear-gradient(to bottom, rgba(245, 246, 252, 0.52), rgba(117, 19, 93, 0.73)),url('/static/assets/hero-pattern.svg'); background-size: cover; background-position: top center;background: linear-gradient(0deg,rgba(24,93,207,0),rgba(24,93,207,.82)),linear-gradient(269.12deg,rgba(24,93,207,0),rgba(24,93,207,0) 13.1%,#185ecf7c);">
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-10 ml-auto mr-auto">
+        <div class="card card-signup">
+          <h2 class="card-title text-center">Join the Network</h2>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-5 ml-auto">
+                <div class="info info-horizontal">
+                  <div class="icon icon-rose">
+                    <i class="material-icons">school</i>
+                  </div>
+                  <div class="description">
+                    <h4 class="info-title">Academic users</h4>
+                    <p class="description">
+                      If you are based at an academic institution, please use your institutional email address. 
+                    </p>
+                  </div>
+                </div>
+                <div class="info info-horizontal">
+                  <div class="icon icon-info">
+                    <i class="material-icons">assignment</i>
+                  </div>
+                  <div class="description">
+                    <h4 class="info-title">Relevant topics</h4>
+                    <p class="description">
+                      Click on the dropdown button below <b>Topics</b> to select the topics that interest to you.
+                      You will be signed up to our mailing list for these topics.
+                    </p>
+                  </div>
+                </div>
+
+              </div>
+              <div class="col-md-5 mr-auto">
+                <form spellcheck="false" autocomplete="off" class="form" method="post">
+
+                  {% csrf_token %}
+
+                  <div class="info info-horizontal">
+                    <div class="description">
+                      {% if form.errors %}
+                      <div class="text-danger"><strong>There were some problems with the form - see below</strong></div>
+                      {% endif %}
+                    </div>
+                  </div>
+              
+                  {% for field in form.visible_fields %}
+
+                  <div class="bmd-form-group {% if field.errors %}has-danger{% endif %} {% if field.field.widget.input_type == 'select' %}select-custom{% endif %}">
+                        {% if field.field.widget.input_type == 'select' %}
+                        <div class="label select-custom">
+                          {{ field.label }}
+                        </div>
+                        {{ field }}
+                        {% else %}
+                          <label for="{{ field.id_for_label }}" class="bmd-label-floating">{{ field.label }}</label>
+                          {% render_field field class="form-control" autocomplete="off" %}  
+                        {% endif %}      
+                        {% if field.errors %}
+                        <span class="hide-on-click form-control-feedback">
+                          <i class="material-icons">clear</i>
+                        </span>
+                        {% endif %}
+                        {% for error in field.errors %}
+                        <div class="hide-on-click text-danger">
+                          <strong>
+                            {{ error }}
+                          </strong>
+                        </div>   
+                        {% endfor %}
+                    </div>
+
+                  {% endfor %}
+
+                  <div class="text-left form-group bmd-form-group">
+                    <div class="text-danger">
+                      <strong>
+                        {% for error in form.non_field_errors %}
+                          {{ error }}
+                        {% endfor %}
+                      </strong>
+                    </div>
+                  </div>
+
+                  <div class="text-left">
+                    <script src='https://www.google.com/recaptcha/api.js'></script>
+                    <p class="g-recaptcha" data-sitekey="{% settings_value 'GOOGLE_RECAPTCHA_SITE_KEY' %}"></p>
+                  </div>
+
+                  <div class="text-center">
+                    <p><input type="submit" value="Sign up" class="btn btn-info btn-round" /></p>                
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Due to conflict between bootstrap-select dropdown and footer links, we remove footer on registration page -->
+</div>
+
+{% endblock %}
+
+

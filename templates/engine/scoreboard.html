@@ -1,0 +1,31 @@
+{% extends "core/page.html" %}
+
+{% block title_head %}
+Scoreboard
+{% endblock %}
+
+{% block title_body %}
+Scoreboard
+{% endblock %}
+
+{% block body %}
+
+  <p>The more publications you assess, the more data we will have for machine learning. For quality control, your assessments will be compared to assessments made by other people, so please think carefully about the <a href="/methods/"> Inclusion Criteria</a>.</p>
+
+  <table class="table views-table cols-3 campl-table campl-table-bordered campl-table-striped campl-vertical-stacking-table table-responsive">
+    <tr>
+      <td class="scoreboard"><span class="heading">Name</span></td>
+      <td class="scoreboard"><span class="heading">Institution</span></td>
+      <td class="scoreboard"><span class="heading">Assessments</span></td>
+    </tr>
+    {% for score in scoreboard|dictsortreversed:"publication_count" %}
+      <tr>
+        <td class="scoreboard">{{ score.first_name}} {{ score.last_name}}</td>
+        <td class="scoreboard">{{ score.institution }}</td>
+        <td class="scoreboard">{{ score.publication_count }}</td>
+      </tr>
+    {% endfor %}
+  </table>
+
+{% endblock %}
+

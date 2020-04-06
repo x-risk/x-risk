@@ -1,0 +1,191 @@
+{% extends "core/base.html" %}
+{% load wagtailimages_tags wagtailcore_tags wagtailembeds_tags cmsapp_tags %}
+
+{% block carousel %}
+{% expr self.carousel_items.all as carousel_items %}
+
+{% if carousel_items %}
+  <div id="carousel" class="carousel slide" data-ride="carousel">
+    {% if carousel_items|length > 1 %}
+      <ol class="carousel-indicators">
+        {% for carousel_item in carousel_items %}
+          <li data-target="#carousel" data-slide-to="{{ forloop.counter0 }}"{% if forloop.first %} class="active"{% endif %}></li>
+        {% endfor %}
+      </ol>
+    {% endif %}
+
+    <div class="carousel-inner" role="listbox">
+      {% for carousel_item in carousel_items %}
+        <div class="carousel-item{% if forloop.first %} active{% endif %}">
+
+                {# Carousel image - first store image as a variable in order to construct an image tag with a title applied (title is used by bxslider js to construct the caption) #}
+                {% image carousel_item.image width-1000 as carouselimagedata %}
+                <div class="page-header header-filter" style="background-image: url('{{ carouselimagedata.url }}');width: 100%; min-height: {{ carouselimagedata.height }}px;" alt="{{ carouselimagedata.alt }}">
+                        <div class="container">
+                                <div class="row">
+                                        {% if carousel_item.embed_url %}
+                                        {# Embedded video - requires an embedly key to be stored in wagtaildemo/settings/local.py #}
+                                        <div class="text-center">
+                                                {% embed carousel_item.embed_url 1000 %}
+                                        </div>
+                                        {% endif %}
+                                        <div class="col-md-8 ml-auto mr-auto text-left">
+                                                {% if carousel_item.caption or carousel_item.link %}
+                                                        <h1 class="title carousel-shadow">{{ carousel_item.caption }}</h1>
+                                                        <h4 class="carousel-shadow">{{ carousel_item.description }}</h4>
+                                                        <br>
+                                                        {% if carousel_item.link %}
+                                                                <a href="{{ carousel_item.link }}" class="btn btn-info btn-round">Read More</a>
+                                                        {% endif %}      
+                                                {% endif %}
+                                        </div>
+                                </div>
+                        </div>
+                </div>
+        </div>
+      {% endfor %}
+    </div>
+
+    {% if carousel_items|length > 1 %}
+        <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
+                <i class="material-icons">keyboard_arrow_left</i>
+                <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carousel" role="button" data-slide="next">
+                <i class="material-icons">keyboard_arrow_right</i>
+                <span class="sr-only">Next</span>
+        </a>
+
+    {% endif %}
+  </div>
+{% endif %}
+
+{% endblock %}
+
+{% block content %}
+<div class="container">
+
+{% if search_term %}
+{% else %}
+{% autoescape off %}
+
+{% expr 0 as cols %}
+{% for block in self.body %}
+{% expr ((block.block_type == 'third_column') or (block.block_type == 'half_column')) as iscolumn %}
+{% if iscolumn %}
+{% if cols == 0 %}
+<div class="row">
+{% endif %}
+{% expr 1 as cols %}
+        <div class="col-md-{% if block.block_type == 'third_column' %}4{% else %}6{% endif %}">
+                {% if block.value.position == 'center' %}
+                        {% if block.value.icon != '' %}
+                        <div class="info text-{{ block.value.position }}">
+                                <div class="icon icon-{{ block.value.icon_colour }}">
+                                        <i class="col-icon material-icons">{{ block.value.icon }}</i>
+                                </div>
+                                {{ block.value.content }}
+                        </div>
+                        {% else %}
+                        <div class="text-{{ block.value.position }}">
+                                {{ block.value.content }}
+                        </div>
+                        {% endif %}
+                {% else %}
+                        {% if block.value.icon != '' %}
+                        <div class="info info-horizontal">
+                                <div class="icon icon-{{ block.value.icon_colour }}">
+                                        <i class="col-icon material-icons">{{ block.value.icon }}</i>
+                                </div>
+                                <div class="description text-{{ block.value.position }}">
+                                        {{ block.value.content }}
+                                </div>
+                        </div>
+                        {% else %}
+                                <div class="text-{{ block.value.position }}">
+                                        {{ block.value.content }}
+                                </div>
+                        {% endif %}
+                {% endif %}
+        </div>
+{% else %}
+        {% if cols == 1 %}
+        </div>
+        {% expr 0 as cols %}
+        {% endif %}
+
+        {% if block.block_type == 'row' %}
+        <div class="row">
+                <div class="col-md-8 ml-auto mr-auto text-{{ block.value.position }}">
+                        {% if block.value.icon != '' %}
+                                <div class="icon icon-{{ block.value.icon_colour }}">
+                                        <i class="row-icon material-icons">{{ block.value.icon }}</i>
+                                </div>
+                        {% endif %}
+                        {{ block.value.content }}
+                </div>
+        </div>
+        {% elif block.block_type == 'tagged_articles' %}
+        <div class="row">
+                {% if block.value.tag == 'recent_publications' %}
+                <div class="col-md-8 ml-auto mr-auto text-left">
+                        <h2>Recent Publications</h2>
+                        <p>A random selection of unassessed recent publications</p>
+                        {% include 'engine/home_latest_publications_item.html' with slug="existential-risk" show_number=5 show_abstract=True %}
+                </div>        
+                {% else %}
+                <div class="col-md-10 ml-auto mr-auto">
+
+                        {% load cmsapp_tags %}
+                        {% get_tagged_articles block.value.tag as taggedarticles %}
+                        {% for article in taggedarticles %}
+                        {% image article.feed_image width-200 as img %}
+                        <div class="card card-plain">
+                                <div class="row">
+                                <div class="col-md-4">
+                                <div class="card-header card-header-image">
+                                <a href="{{ article.url }}">
+                                        <img class="img img-raised" src="{{ img.url }}">
+                                </a>
+                                <div class="colored-shadow" style="background-image: url(&quot;{{ img.url }}&quot;); opacity: 1;"></div></div>
+                                </div>
+                                <div class="col-md-7 text-left">
+                                <h3 class="card-title">
+                                <a href="{{ article.url }}">{{ article.title }}</a>
+                                </h3>
+                                <p class="card-description">
+                                        {{ child.body|safe|truncatewords_html:50 }}
+                                        <a href="{{ article.url }}"> Read More </a>
+                                </p>
+                                </div>
+                                </div>
+                        </div>
+
+                        {% endfor %}
+                </div>
+                {% endif %}
+        </div>
+        {% else %}
+                {{ block.value.html }}
+        {% endif %}
+{% endif %}
+
+
+{% if forloop.last %}
+{% if cols == 1 %}
+</div>
+{% endif %}
+{% endif %}
+
+{% endfor %}
+
+{% endautoescape %}
+{% endif %}
+
+</div>
+
+{% endblock %}
+
+
+
+

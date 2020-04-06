@@ -1,0 +1,40 @@
+.campl-app-footer {color: #fff;}
+.campl-app-footer-content { padding: 0 20px; text-align: left;}
+.campl-app-footer-content img { padding: 0 10px 0 0;}
+legend {width:50%; float: left;}
+.campl-no-padding {padding:0;}
+.campl-min-padding {padding: 0 20px 14px;}
+.campl-nav-tabs, .campl-nav-pills {font-size: 14px;font-weight: 200;line-height: 22px;margin-bottom: 12px;}
+.campl-nav-tabs > li > a {text-decoration: none;background-color: #f1efed;color: #0072CF;}
+.tab-pane .campl-content-container {padding: 10px 20px;}
+.campl-listing-title {font-family: verdana,arial,sans-serif;font-size: 14px;font-weight: bold;line-height: 16px;margin:0 0 4px 0;}
+.results .campl-content-container {padding: 20px 20px 10px;}
+.campl-search-input {height: 36px;min-height: 36px; padding:0;}
+.campl-search-input input.campl-search-submit {height: 37px;width: 36px;}
+.user_identity p {padding:0 0 0 12px;}
+
+
+/* mobile stuff */
+@media (max-width: 1000px) {
+	/*Change main nav*/
+	.campl-global-navigation{width:280px}
+	.campl-global-navigation li{width:33%}
+	.campl-global-navigation li a{padding:25px 10px}
+	.campl-header-container{width:auto;float:left}
+}
+
+@media (max-width: 767px) {
+    .campl-page-title{font-size: 28px;line-height: 28px;margin-bottom:0} 
+/*reduced line height*/
+    h2, .campl-slide-caption-txt,  legend, .campl-highlight-day{font-size: 22px;line-height: 24px;}
+/*reduced font size and line height*/
+    .campl-site-box {float: left;}
+/*fix height of global header (contents absolutely positioned)*/
+.campl-header-container {height: 68px;}
+.collapse {display:none}
+.campl-min-padding h1 {padding-top: 10px;}
+.campl-user_identity {padding:0 20px;}
+.campl-user_identity p {padding:0;}
+
+}
+

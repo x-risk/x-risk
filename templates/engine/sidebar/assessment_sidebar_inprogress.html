@@ -1,0 +1,31 @@
+
+<div class="card bg-info">
+	<div class="card-body">
+	  <h5 class="card-category card-category-social">
+      <i class="material-icons">assessment</i> <b>Your Manual Assessments</b>
+	  </h5>
+
+    <h4 class="mt-4 card-title">{{ search_topic.topic|capfirst }}</h4>
+
+    <p class="card-text">
+      <span class="text-right btn-block badge badge-pill">{{ publications_assessed_percent }}% complete</span>
+      <div class="progress progress-line-primary">
+        <div class="progress-bar progress-bar-primary" role="progressbar" style="width: {{ publications_assessed_percent }}%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+      </div>
+    </p>
+
+    <p class="card-text">
+      <b>{{ publications_assessed_count }}</b> assessments from 
+      <b>{{ publications_count }}</b> publications
+    </p>
+    
+    <p class="card-text"><a class="btn btn-white btn-round btn-block" href="{% url 'home' %}">Leave assessment process</a> <span class="warning"></span></p>
+
+	</div>
+</div>
+
+<!-- CHANGE TO WORK WITH DEFAULT SIDEBAR -->
+
+{% if search_topic.topic == 'existential risk' %}
+  {% include 'engine/sidebar/existential_risk_sidebar.html' %}
+{% endif %}

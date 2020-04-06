@@ -1,0 +1,26 @@
+<!-- Item-specific template for displaying topic in a list of topics on account homepage -->
+
+<tr>
+    <td class="text-left align-middle">
+        <a class="text-info" href="{% url 'topics' slug=assessment_data.slug %}">{{ assessment_data.search_topic }} &rarr;</a>
+    </td>
+    <td class="text-center">
+        <div class="text-right">
+            <div class="mb-2">
+                <span class="badge badge-pill badge-white text-dark"><b>{{ assessment_data.publications_assessed_count }} / {{ assessment_data.publications_count }}</b></span>
+                <span class="badge badge-pill badge-info"><b>{{ assessment_data.publications_assessed_percent }} %</b></span>            
+            </div>
+            <div class="progress progress-line-primary">
+            <div class="progress-bar progress-bar-primary" role="progressbar" style="width: {{ assessment_data.publications_assessed_percent }}%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>      
+        </div>
+
+    </td>
+    <td class="text-center">
+        <a href="{% url 'assessments' slug=assessment_data.slug pk=assessment_data.next_assessment %}">
+            <button type="button" rel="tooltip" class="btn btn-info btn-round btn-just-icon btn-sm" data-original-title="" title="">
+                    <i class="text-white material-icons">play_arrow</i>
+            </button>        
+        </a>
+    </td>
+</tr>

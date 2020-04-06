@@ -1,0 +1,198 @@
+@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700&display=swap");
+
+a {
+  font-weight:600!important;
+}
+
+a.nav-link,
+a.navbar-brand,
+a.dropdown-item,
+a.btn,
+span a,
+.footer a {
+  font-weight:400!important;
+}
+
+html {
+  font-family: "Segoe UI", "Source Sans Pro", Calibri, Candara, Arial, sans-serif;
+}
+
+body {
+  font-family: "Segoe UI", "Source Sans Pro", Calibri, Candara, Arial, sans-serif;
+  color: #3c4858;
+}
+
+.serif-font {
+  font-family: "Segoe UI", "Source Sans Pro", Calibri, Candara, Arial, sans-serif;
+}
+
+h1,
+.h2,
+.h3,
+.h4,
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Segoe UI", "Source Sans Pro", Calibri, Candara, Arial, sans-serif;
+}
+
+h2 {
+  line-height: 1.3em;
+}
+
+.card-title,
+.footer-big h4,
+.footer-big h5,
+.footer-brand,
+.info-title,
+.media .media-heading,
+.title {
+    font-family: "Segoe UI", "Source Sans Pro", Calibri, Candara, Arial, sans-serif
+}
+
+.title,
+.card-title,
+.info-title,
+.footer-brand,
+.footer-big h5,
+.footer-big h4,
+.media .media-heading {
+  font-weight: 300;
+}
+
+p {
+    font-size: 15px;
+}
+
+.bootstrap-select .select-with-transition {
+    background: no-repeat bottom, 50% calc(100% - 1px);
+    transition: background 0s ease-out!important;
+    background-size: 0 100%, 100% 100%;
+    background-color: transparent!important;
+    color: inherit!important;
+    box-shadow: none!important
+}
+
+.bootstrap-select .btn.active,
+.bootstrap-select .btn:active,
+.bootstrap-select .select-with-transition {
+    background-image: linear-gradient(0deg, #9c27b0 2px, rgba(156, 39, 176, 0) 0), linear-gradient(0deg, rgba(0, 0, 0, .26) 1px, transparent 0)
+}
+
+.bootstrap-select.show .select-with-transition:focus {
+    background-size: 100% 100%, 100% 100%;
+    transition-duration: .3s!important
+}
+
+.bootstrap-select .dropdown-toggle:focus {
+    outline: none!important
+}
+
+.bootstrap-select.show>.dropdown-menu>.dropdown-menu {
+    display: block
+}
+
+.bootstrap-select>.dropdown-menu>.dropdown-menu li.hidden {
+    display: none
+}
+
+.maincontent {
+    padding: 80px 0;
+}
+
+.navbar {
+  margin-bottom:  0px;
+}
+
+.placeholder-white::-webkit-input-placeholder {
+  color:        rgb(224, 224, 224);
+}
+
+.carousel-shadow {
+  font-weight:  400;
+  text-shadow:  5px 5px 5px #272323;    
+}
+
+.bootstrap-select:not([class*=col-]):not([class*=form-control]):not(.input-group-btn) {
+  width:        100%;
+}
+
+.bmd-form-group.select-custom {
+  padding-top: 24px;
+}
+
+.mdi-18px { font-size: 18px; vertical-align:bottom;}
+.mdi-24px { font-size: 24px; vertical-align:bottom;}
+.mdi-36px { font-size: 36px; vertical-align:bottom;}
+.mdi-48px { font-size: 48px; vertical-align:bottom;}
+.mdi-60px { font-size: 60px; vertical-align:bottom;}
+.mdi-72px { font-size: 72px; vertical-align:bottom;}
+
+.footer-container {
+  padding-top:70px;
+}
+
+.footer {
+  z-index:1!important;
+}
+
+.btn-primary {
+  color:#00bcd4 !important;  
+}
+
+.row-icon {
+  font-size: 3.85rem!important;
+}
+
+.col-icon {
+  font-size: 2.85rem!important;
+}
+
+.search-button-container {
+  padding-left: 10px;
+}
+
+.search-button-button {
+  padding: 10px;
+}
+
+@media screen and (max-width: 767px) {
+  body.loginspecial-page .footer {
+    display: none;
+  }
+
+  .maincontent {
+    padding: 20px 0;
+  }
+
+  .footer-container {
+    padding-top: 10px;
+  }
+}
+
+@media (max-width: 991px){
+  .nav-open .navbar-collapse {
+    box-shadow: 0 0 60px rgba(34,36,38,.25);
+  }
+}
+
+/* Always make image fit inside container */
+
+.richtext-image {
+  max-width: 100%;
+  object-fit: contain;
+}
+
+@media screen and (max-width: 767px) {
+  .loginspecial-page .page-header > .container {
+    padding-bottom: 0px;
+  }
+}
+
+@media screen and (max-width: 767px){
+  #rc-imageselect, .g-recaptcha {transform:scale(0.77);-webkit-transform:scale(0.77);transform-origin:0 0;-webkit-transform-origin:0 0;}
+}

@@ -1,0 +1,119 @@
+[
+{
+  "model": "engine.publication",
+  "pk": 1,
+  "fields": {
+    "title": "Dummy article - remove from live",
+    "abstract": "Dummy abstract - remove from live",
+    "author": "Dummy author",
+    "year": "2020",
+    "journal": "Dummy journal",
+    "volume": "Dummy volume",
+    "issue": "Dummy issue",
+    "pages": "Dummy pages",
+    "doi": "",
+    "created": "2020-01-01T00:00:00Z",
+    "updated": "2020-01-01T00:00:00Z",
+    "search_topics": [
+      1
+    ],
+    "searches": []
+  }
+},
+{
+  "model": "engine.topic",
+  "pk": 1,
+  "fields": {
+    "topic": "existential risk",
+    "slug": "existential-risk"
+  }
+},
+{
+  "model": "engine.topic",
+  "pk": 2,
+  "fields": {
+    "topic": "artificial intelligence",
+    "slug": "artificial-intelligence"
+  }
+},
+{
+  "model": "engine.topic",
+  "pk": 3,
+  "fields": {
+    "topic": "cosmic disaster (e.g., asteroid impact)",
+    "slug": "cosmic-disaster-eg-asteroid-impact"
+  }
+},
+{
+  "model": "engine.topic",
+  "pk": 5,
+  "fields": {
+    "topic": "climate change",
+    "slug": "climate-change"
+  }
+},
+{
+  "model": "engine.topic",
+  "pk": 6,
+  "fields": {
+    "topic": "ecosystem failure",
+    "slug": "ecosystem-failure"
+  }
+},
+{
+  "model": "engine.topic",
+  "pk": 7,
+  "fields": {
+    "topic": "system failure (e.g., the electricity grid)",
+    "slug": "system-failure-eg-the-electricity-grid"
+  }
+},
+{
+  "model": "engine.topic",
+  "pk": 8,
+  "fields": {
+    "topic": "other science or technology",
+    "slug": "other-science-or-technology"
+  }
+},
+{
+  "model": "engine.topic",
+  "pk": 9,
+  "fields": {
+    "topic": "war or terrorism (e.g., nuclear weapons)",
+    "slug": "war-or-terrorism-eg-nuclear-weapons"
+  }
+},
+{
+  "model": "engine.topic",
+  "pk": 10,
+  "fields": {
+    "topic": "biological disaster (e.g., natural pandemic)",
+    "slug": "biological-disaster-eg-natural-pandemic"
+  }
+},
+{
+  "model": "engine.topic",
+  "pk": 11,
+  "fields": {
+    "topic": "geological disaster (e.g., super-volcano)",
+    "slug": "geological-disaster-eg-super-volcano"
+  }
+},
+{
+  "model": "engine.topic",
+  "pk": 12,
+  "fields": {
+    "topic": "biotechnology (e.g., genetic engineering)",
+    "slug": "biotechnology-eg-genetic-engineering"
+  }
+},
+{
+  "model": "engine.publication_search_topics",
+  "pk": 1,
+  "fields": {
+    "publication": 1,
+    "topic": 1
+  }
+}
+]

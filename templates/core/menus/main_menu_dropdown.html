@@ -1,0 +1,51 @@
+{% load menu_tags %}
+
+
+<ul class="navbar-nav ml-auto">
+
+	{% if user.is_authenticated %}
+
+	<li class="nav-item">
+		<a class="nav-link" href="{% url 'home' %}"><i class="material-icons text-info">home</i> Account Home</a>
+	</li>
+
+	{% endif %}
+
+	{% for item in menu_items %}
+    <li class="nav-item {{ item.active_class }}{% if item.has_children_in_menu %} dropdown nav-Item-hasDropdown{% endif %}">
+        <a class="nav-link {% if item.has_children_in_menu %}dropdown-toggle{% endif %}" href="{{ item.href }}"{% if item.has_children_in_menu %} class="dropdown-toggle" id="ddtoggle_{{ item.link_page.pk }}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"{% endif %}>{{ item.text }}{% if item.has_children_in_menu %} <span class="caret nav-DropdownIndicator"></span>{% endif %}</a>
+        {% if item.has_children_in_menu %}
+        	{% sub_menu item template="core/menus/sub_menu_dropdown.html" %}
+        {% endif %}
+    </li>       
+	{% endfor %}
+
+<form spellcheck="false" autocomplete="off" class="form-inline my-2 my-0 srh-Search" action="/search/" method="get">
+	<!--	<i class="material-icons">search</i>-->	
+		<input autocomplete="off" id="main-search-box" class="form-control mr-sm-2" style="margin-left:20px;" type="text" placeholder="Search website..." name="q">	
+</form>
+
+<li class="dropdown nav-item">
+	<a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false">
+	  <i class="material-icons">account_circle</i> {% if user.is_authenticated %}Logged in as <b>{{ user.username}}</b>{% else %}Login{% endif %} 
+	<div class="ripple-container"></div></a>
+	<div class="dropdown-menu dropdown-with-icons">
+
+{% if user.is_authenticated %}
+
+		<a class="dropdown-item" href="/application/profile"><i class="material-icons">account_circle</i> Profile</a>
+		<a class="dropdown-item" href="{% url 'logout' %}"><i class="material-icons">exit_to_app</i> Logout</a>
+
+{% else %}
+
+		<a class="dropdown-item" href="{% url 'login' %}"><i class="material-icons">lock_open</i> Login</a>
+		<a class="dropdown-item" href="/application/signup"><i class="material-icons">person_add</i> Register</a>
+	
+{% endif %}
+</div>
+
+</li>
+
+</ul>
+
+

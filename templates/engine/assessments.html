@@ -1,0 +1,156 @@
+{% extends "core/page.html" %}
+
+{% load widget_tweaks %}
+{% load cmsapp_tags %}
+
+{% block title_head %}
+Make Assessment
+{% endblock %}
+
+{% block breadcrumb %}
+{% include 'core/breadcrumb.html' with title_body_content="Make Assessment" %}
+{% endblock %}
+
+{% block body %}
+
+  <h2>{{ publication.title|default:'No title'|safe }}</h2>
+
+  <p>
+    Search for the full text: <a target="_blank" href="http://www.google.com/search?q={{ publication.google_string }}">Google</a>
+    {% if publication.doi != 'NA' and publication.doi != '' %}
+       | <a target="_blank" href="http://dx.doi.org/{{ publication.doi }}">DOI</a>
+    {% endif %}
+  </p>
+
+  <h3>Abstract</h3>
+  <p>{{ publication.abstract|default:'Not available'|safe }}</p>
+
+  <h4>Reference</h4>
+  <p>{{ publication.author|default:'[authors not available]'|safe }} ({{ publication.year|default:'[year not available]'|safe }})
+{{ publication.title|default:'[title not available]'|safe }}, in <span class="italic">{{ publication.journal|default:'[journal not available]'|safe }}</span> 
+{{ publication.volume|default:'[volume not available]'|safe }}, {{ publication.pages|default:'[pages not available]'|safe }}.</p>
+
+<form spellcheck="false" autocomplete="off" method="POST">
+{% csrf_token %}
+
+
+<div class="card {% if assessment_form.instance.topic %}bg-light text-dark{% else %}bg-info{% endif %}">
+	<div class="card-body">
+
+      <h5 class="card-category {% if assessment_form.instance.topic %}text-info{% endif %} card-category-social">
+      <i class="material-icons">assessment</i> <b>Your Assessment</b>
+        <div class="float-right">
+          {% if assessment_form.instance.topic %}
+            <i class="material-icons text-success">done</i> <span class="badge badge-pill badge-success">Completed</span>
+          {% else %}
+            <i class="material-icons text-white">edit</i> <span class="badge badge-pill badge-danger">Not assessed</span>
+          {% endif %}
+        </div>
+	  </h5>
+
+      <p class="card-text">If you think this publication is relevant to existential risk or global catastrophic risk (based on its title and abstract), then please tick the box below. Please refer to the inclusion criteria, when making your assessment.</p>
+  
+       <div class="custom-control custom-checkbox form-group">
+  
+          {% if assessment_form.instance.topic %}
+            {% if assessment_form.instance.is_relevant %}
+              <div>
+                {% render_field assessment_form.is_relevant class="custom-control-input campl-checkbox inline" %}
+                <label class="custom-control-label inline text-info" for="{{ assessment_form.is_relevant.id_for_label }}">
+                <strong>{{ assessment_form.instance.topic|capfirst }}</strong>
+                </label>
+                {{ assessment_form.topic.as_hidden }}
+              </div>      
+            {% else %}  
+              <div>
+                {% render_field assessment_form.is_relevant class="custom-control-input campl-checkbox inline" %} 
+                <label class="custom-control-label inline text-muted" for="{{ assessment_form.is_relevant.id_for_label }}">
+                {{ assessment_form.instance.topic|capfirst }}
+                </label>
+                {{ assessment_form.topic.as_hidden }}  
+              </div>
+            {% endif %}
+          {% else %}
+            <div>
+              {% render_field assessment_form.is_relevant class="custom-control-input campl-checkbox inline" %}
+              <label class="custom-control-label text-white inline" for="{{ assessment_form.is_relevant.id_for_label }}">
+              <strong>{{ assessment_form.topic.initial|capfirst }}</strong>
+              </label>
+              {{ assessment_form.topic.as_hidden }}
+            </div>
+          {% endif %}
+  
+        </div>
+  
+      <p>If you ticked the box above, then please also tick the box below for each category of existential risk to which you think this publication is relevant 
+        (if there are any). Please see the <a href="/methods/"><b>Methods</b></a> for information on these categories.</p>
+  
+      {{ assessment_formset.management_form }}
+      {% for assessment_form in assessment_formset %}
+    <div class="custom-control custom-checkbox">
+          {{ assessment_form.id }}
+  
+          {% if assessment_form.instance.topic %}
+            {% if assessment_form.instance.is_relevant %}
+              <div>
+                {% render_field assessment_form.is_relevant class="custom-control-input campl-checkbox inline" %}
+                <label class="custom-control-label inline text-info" for="{{ assessment_form.is_relevant.id_for_label }}">
+                <strong>{{ assessment_form.instance.topic|capfirst }}</strong>
+                </label>
+                {{ assessment_form.topic.as_hidden }}
+              </div>
+            {% else %}
+              <div>
+                {% render_field assessment_form.is_relevant class="custom-control-input campl-checkbox inline" %}
+                <label class="custom-control-label inline text-muted" for="{{ assessment_form.is_relevant.id_for_label }}">
+                {{ assessment_form.instance.topic|capfirst }}
+                </label>
+                {{ assessment_form.topic.as_hidden }}
+              </div>
+            {% endif %}
+          {% else %}
+            <div class="assessment">
+              {% render_field assessment_form.is_relevant class="custom-control-input campl-checkbox inline" %}
+              <label class="custom-control-label text-white inline" for="{{ assessment_form.is_relevant.id_for_label }}">
+              {{ assessment_form.topic.initial|capfirst }}
+              </label>
+              {{ assessment_form.topic.as_hidden }}
+            </div>
+          {% endif %}
+  
+    </div>
+  
+      {% endfor %}
+    
+
+	</div>
+
+  <div class="card-body">
+    <p>Click "Save" when you have made your assessment (whether or not you have ticked a box). You will then be shown the next assessment in the random order that has been assigned to you.</p>  
+    <div class="text-center">
+      <input class="btn btn-primary btn-round" type="submit" name="save" value="Save" />
+      <input class="btn btn-danger btn-round" type="submit" name="reset" value="Reset" />
+      <input class="btn btn-white btn-round" type="submit" name="pass" value="Pass" />
+    </div>
+  </div>
+
+</div>
+
+
+</form>
+
+<div class="text-center">
+  <p class="text-muted">Click "Back" and "Forward" only to revisit your previous assessments (to check or change them), but not to look for your next assessment. That way, your assessments will be made in a random order, which is best practice.</p>        
+  <a title="Previous record" href="{% url 'assessments' slug=search_topic.slug pk=previous_pk %}" class="btn btn-info btn-just-icon btn-round"><i class="material-icons">chevron_left</i></a>
+  <a title="Next record" href="{% url 'assessments' slug=search_topic.slug pk=next_pk %}" class="btn btn-info btn-just-icon btn-round"><i class="material-icons">chevron_right</i></a>
+</div>
+
+
+{% endblock %}
+
+
+{% block sidebar %}
+  {% if user.is_authenticated %}
+    {% include 'engine/sidebar/assessment_sidebar_inprogress.html' %}
+  {% endif %}
+{% endblock %}

@@ -1,0 +1,19 @@
+{% autoescape off %}
+
+Update from The Existential Risk Research Assessment (TERRA)
+
+We found some new publications.
+
+Our machine-learning model predicted these publications to be relevant to existential risk or global catastrophic risk. However, we need your help to assess whether or not they are truly relevant.
+
+Please see <a href="{{ protocol}}://{{ domain }}{% url 'topics' slug=topic.slug state='new_medium_recall' %}">{{ domain }}</a> to assess these publications (you will need to sign in before you can make assessments). If you are already signed in, you can click through to each publication from this email, using the links below. Please refer to the Inclusion Criteria in the <a href="{{ protocol}}://{{ domain }}/methods">Methods</a> when making your assessments.
+
+Here are the titles of these new publications:
+
+{% for publication in publications %}
+  {{ publication.title }} (<a href="{{ protocol}}://{{ domain }}{% url 'assessments' slug=topic.slug pk=publication.pk %}">Assess this publication</a>)
+{% endfor %}
+
+<a href="{{ protocol}}://{{ domain }}{% url 'deactivate_confirm' %}">Unsubscribe</a> from this mailing list
+
+{% endautoescape %}

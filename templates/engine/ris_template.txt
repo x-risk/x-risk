@@ -1,0 +1,15 @@
+{% for publication in publications %}
+TY  - JOUR
+{% for name in publication.split_author %}
+AU  - {{ name.0 }}, {{ name.1 }}
+{% endfor %}
+TI  - {{ publication.title|safe }}
+PY  - {{ publication.year }}///
+T2  - {{ publication.journal }}
+VL  - {{ publication.volume }}
+IS  - {{ publication.issue }}
+SP  - {{ publication.split_pages.0 }}
+EP  - {{ publication.split_pages.1 }}
+DO  - {{ publication.doi|safe }}
+ER  -
+{% endfor %}

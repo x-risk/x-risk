@@ -1,0 +1,49 @@
+
+<div class="card bg-info">
+	<div class="card-body">
+	  <h5 class="card-category card-category-social">
+      <i class="material-icons">assessment</i> <b>Your Manual Assessments</b>
+	  </h5>
+
+    <h4 class="mt-4 card-title">{{ search_topic.topic|capfirst }}</h4>
+
+    <p class="card-text">
+      <span class="text-right btn-block badge badge-pill">{{ publications_assessed_percent }}% complete</span>
+      <div class="progress progress-line-primary">
+        <div class="progress-bar progress-bar-primary" role="progressbar" style="width: {{ publications_assessed_percent }}%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+      </div>
+    </p>
+
+    <p class="card-text">
+      <b>{{ publications_assessed_count }}</b> assessments from 
+      <b>{{ publications_count }}</b> publications
+    </p>
+
+    <p class="card-text">
+      <span class="badge badge-pill badge-info"><a class="text-white" href="{% url 'topics' slug=search_topic.slug state='relevant' %}">Relevant</a></span>      
+      <span class="badge badge-pill badge-info"><a class="text-white" href="{% url 'topics' slug=search_topic.slug state='irrelevant' %}">Irrelevant</a></span>      
+      <span class="badge badge-pill badge-info"><a class="text-white" href="{% url 'topics' slug=search_topic.slug state='assessed' %}">Assessed</a></span>      
+      <span class="badge badge-pill badge-info"><a class="text-white" href="{% url 'topics' slug=search_topic.slug state='unassessed' %}">Pending</a></span>            
+    </p>
+
+    <p class="card-text"><a class="btn btn-white btn-round btn-block text-truncate" href="{% url 'assessments' slug=search_topic.slug pk=next_assessment %}">Start/restart next assessment</a> <span class="warning"></span></p>
+
+    <h5 class="card-title">
+      <b><a href="{% url 'topics' slug=search_topic.slug %}">Relevant publications <i class="material-icons">link</i></a>
+        (<a href="{% url 'download_csv' slug=search_topic.slug %}">CSV</a> | <a href="{% url 'download_ris' slug=search_topic.slug %}">RIS</a>)</b>
+    </h5>
+
+    <!--
+    <p class="card-text">
+      <a class="btn btn-success btn-round btn-block" href="{% url 'scoreboard' %}">Scoreboard</a>
+    </p>
+    -->
+    
+	</div>
+</div>
+
+<!-- CHANGE TO WORK WITH DEFAULT SIDEBAR -->
+
+{% if search_topic.topic == 'existential risk' %}
+  {% include 'engine/sidebar/existential_risk_sidebar.html' %}
+{% endif %}

@@ -1,0 +1,49 @@
+{% extends "core/page.html" %}
+{% load cmsapp_tags %}
+
+{% block title_head %}
+Search Publications
+{% endblock %}
+
+{% block title_body %}
+Publications search
+{% endblock %}
+
+{% block body %}
+
+  {% for publication in page_obj.object_list %}
+    <h3>{{ publication.object.title|default:'[title not available]' }}</h3>
+
+    <p>{{ publication.object.author|default:'[authors not available]' }} ({{ publication.object.year|default:'[year not available]' }}) {{ publication.object.title|default:'[title not available]' }}, in <span class="italic">{{ publication.object.journal|default:'[journal not available]' }}</span> {{ publication.object.volume|default:'[volume not available]'}}, {{ publication.object.pages|default:'[pages not available]' }}.</p>
+
+    {% if user.is_authenticated %}
+      <p><a href="{% url 'assessments' slug='existential-risk' pk=publication.object.pk %}">Assess this publication &rarr;</a></p>
+    {% else %}
+      <p>
+        Search for the full text: <a target="_blank" href="http://www.google.com/search?q={{ publication.object.google_string }}">Google</a>
+        {% if publication.object.doi != 'NA' and publication.object.doi != '' %}
+           | <a target="_blank" href="http://dx.doi.org/{{ publication.object.doi }}">DOI</a>
+        {% endif %}
+      </p>
+    {% endif %}
+
+    <p class="hr"></p>
+
+  {% empty %}
+    <h3>No publications</h3>
+  {% endfor %}
+
+  <div class="my-4"></div>
+
+
+  {% if page_obj.has_other_pages %}
+
+  {% include 'core/paginator.html' with publications=page_obj %}
+
+  {% endif %}
+
+{% endblock %}
+
+{% block sidebar %}
+  {% include 'engine/sidebar/bibliography_sidebar.html' %}
+{% endblock %}

@@ -1,0 +1,95 @@
+{% extends "core/page.html" %}
+{% load widget_tweaks %}
+
+{% block title_head %}
+Your Profile
+{% endblock %}
+
+{% block title_body %}
+Your Profile
+{% endblock %}
+
+{% block body %}
+
+  <form spellcheck="false" autocomplete="off" class="form" method="post">
+
+    {% csrf_token %}
+
+    <div class="row">
+      <div class="col-lg-10">
+        <p>Click on the button below "Topics" to modify your topics of interest, then click "Save" to save any changes. 
+          To change your username or email address, please <a href="/contact">contact us</a>.
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-8">
+
+        {% if form.errors %}
+
+        <div class="info info-horizontal">
+          <div class="description">
+            <div class="text-danger">There were some problems with the form - see below</div>
+          </div>
+        </div>
+
+        {% endif %}
+
+        {% for field in user_form %}
+
+        <div class="bmd-form-group {% if field.errors %}has-danger{% endif %} {% if field.field.widget.input_type == 'select' %}select-custom{% endif %}">
+            <label for="{{ field.id_for_label }}" class="bmd-label-floating">{{ field.label }}</label>
+            {% render_field field class="form-control" autocomplete="off" %}  
+            {% if field.errors %}
+            <span class="hide-on-click form-control-feedback">
+              <i class="material-icons">clear</i>
+            </span>
+            {% endif %}
+            {% for error in field.errors %}
+            <div class="hide-on-click text-danger">
+              {{ error }}
+            </div>   
+            {% endfor %}
+        </div>
+
+        {% endfor %}
+
+        {% for field in profile_form %}
+
+        <div class="bmd-form-group {% if field.errors %}has-danger{% endif %} {% if field.field.widget.input_type == 'select' %}select-custom{% endif %}">
+  
+          {% if field.field.widget.input_type == 'select' %}
+              <div class="label select-custom">
+                {{ field.label }}
+              </div>
+              {{ field }}
+            {% else %}
+              <label for="{{ field.id_for_label }}" class="bmd-label-floating">{{ field.label }}</label>
+              {% render_field field class="form-control" autocomplete="off" %}  
+            {% endif %}
+            {% if field.errors %}
+            <span class="form-control-feedback">
+              <i class="material-icons">clear</i>
+            </span>
+            {% endif %}
+            {% for error in field.errors %}
+            <div class="text-danger">
+              {{ error }}
+            </div>   
+            {% endfor %}
+        </div>
+
+        {% endfor %}
+
+        <div class="form-group">
+          <input class="btn btn-round btn-info" type="submit" name="save" value="Save" /> 
+          <a class="btn btn-round btn-danger" href="{% url 'deactivate_confirm' %}">Unsubscribe</a>
+        </div>
+
+      </div>
+    </div>
+
+  </form>
+
+{% endblock %}
+

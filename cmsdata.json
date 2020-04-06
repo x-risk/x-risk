@@ -1,0 +1,689 @@
+[
+{
+  "model": "contentmanager.defaultpage",
+  "pk": 8,
+  "fields": {
+    "body": "[{\"type\": \"paragraph\", \"value\": \"<h2>The problem: an overwhelming volume of research</h2><p>An overwhelming volume of research has been published, and more is being published all the time. It is taking an increasingly long time to find all of the publications that are relevant to our research. We need new methods of efficiently searching for relevant publications, and we need these methods to be systematic, to minimize bias in the publications that we read and the conclusions that we reach<a data-anchor=\\\"true\\\" href=\\\"#ref1\\\"><sup>1</sup></a>.</p><h2>The solution: a semi-automated system for finding relevant research</h2><p>This system uses volunteers from The Existential Risk Research Network to identify relevant publications in a set of search results, and then it uses machine learning to identify similar publications in new sets of search results. It is a &quot;recommender system&quot; or &quot;recommendation engine&quot;.</p><h3><i>1. Humans do some of the work</i></h3><p>We search a database<a data-anchor=\\\"true\\\" href=\\\"#ref2\\\"><sup>2</sup></a> for publications that might be relevant to existential risk. The results of this search are a &quot;corpus&quot; of publications that might be relevant. Using the titles and/or abstracts of the publications in this corpus, we assess the relevance of each publication, labelling it as &quot;relevant&quot; or &quot;irrelevant&quot;.</p><h3><i>2. Machines do some of the work</i></h3><p>We &quot;train&quot; a machine-learning algorithm to identify relevant publications in the corpus, by telling it which publications are relevant and which are not, and giving it the titles and/or abstracts of these publications<a data-anchor=\\\"true\\\" href=\\\"#ref3\\\"><sup>3</sup></a>. We then set up an automated and regularly-scheduled search for new publications, using the same search strategy<a data-anchor=\\\"true\\\" href=\\\"#ref4\\\"><sup>4</sup></a> as we used before, and the trained algorithm tells us which of the new publications are likely to be relevant.</p><h3><i>3. Humans do some more of the work</i></h3><p>Because the algorithm is not perfect, we double-check the publications that it predicts to be relevant, as a method of quality control. If we agree that a publication is relevant, then we add it to our bibliography, which is published on this website as a resource for the research community. Thus, this is a semi-automated system<a data-anchor=\\\"true\\\" href=\\\"#ref5\\\"><sup>5</sup></a>. Humans are still part of the process, but we save time by not searching through all of the publications that the machine has (correctly or incorrectly) identified as irrelevant.</p><h2>Why not Google it?</h2><p>Why do we do all this, when we could search for &quot;existential risk&quot; or any other topic in a search engine?</p><h3><i>Transparent and repeatable searching</i></h3><p>The algorithms that are used by search engines are &quot;black boxes&quot; that are not open to public scrutiny and may give different results for different users. In contrast, our methods are transparent, and therefore they are open to scrutiny and they are repeatable, both of which are of critical importance to scientific progress (improving the methods over time, and gauging our confidence in the results).</p><h3><i>Collaborative and cumulative results</i></h3><p>It is inefficient or impossible for everyone who is interested in a topic, such as existential risk, to go through all of the search results by themselves. We share the work between many people (and machines), and we also share the results. If someone wants to know about this topic, then they will have access to a systematically and transparently collected bibliography that represents a vast amount of collective work and knowledge, rather than having to &quot;reinvent the wheel&quot; by doing their own search.</p><h2>Notes</h2><p><a data-id=\\\"ref1\\\" href=\\\"#ref1\\\" id=\\\"ref1\\\"><sup>1</sup></a> For more information on this problem and its solutions, please see O&#x27;Mara-Eves, A., Thomas, J., McNaught, J., Miwa, M., Ananiadou, S. (2015). Using text mining for study identification in systematic reviews: a systematic review of current approaches. <i>Systematic Reviews</i>, <b>4</b>:5 (<a href=\\\"https://doi.org/10.1186/2046-4053-4-5\\\">DOI</a>).</p><p><a data-id=\\\"ref2\\\" href=\\\"#ref2\\\" id=\\\"ref2\\\"><sup>2</sup></a> We search the Scopus database at present, but we plan to search additional databases (such as Web of Science) in the future.</p><p><a data-id=\\\"ref3\\\" href=\\\"#ref3\\\" id=\\\"ref3\\\"><sup>3</sup></a> Please see <a href=\\\"/methods/\\\">Methods</a> and <a href=\\\"/application/ml/\\\">Machine Learning</a> for details.</p><p><a data-id=\\\"ref4\\\" href=\\\"#ref4\\\" id=\\\"ref4\\\"><sup>4</sup></a> We use a set of keywords, defined by members of the research community and refined over time. Please see <a href=\\\"/methods/\\\">Methods</a> for details.</p><p><a data-id=\\\"ref5\\\" href=\\\"#ref5\\\" id=\\\"ref5\\\"><sup>5</sup></a> For examples of similar semi-automated systems, please see Lyon A., Grossel, G., Burgman, M., Nunn, M. (2013). Using internet intelligence to manage biosecurity risks: a case study for aquatic animal health. <i>Diversity and Distributions</i>, <b>19</b>, 640-650 (<a href=\\\"http://dx.doi.org/10.1111/ddi.12057\\\">DOI</a>).</p>\", \"id\": \"a38a8f7b-deb5-4a3e-91bd-2deacafbb927\"}]",
+    "date": "2020-03-07",
+    "feed_image": null
+  }
+},
+{
+  "model": "contentmanager.defaultpage",
+  "pk": 9,
+  "fields": {
+    "body": "[{\"type\": \"paragraph\", \"value\": \"<p>Different topics have different search strategies (the keywords that we use to search for publications) and different inclusion criteria (the criteria that we use to assess publications as &quot;relevant&quot; or &quot;not relevant&quot; for inclusion in the bibliography).</p><h2>Topic: Existential risk and global catastrophic risk</h2><p>For the purpose of this assessment, a risk is &quot;catastrophic&quot; if it causes at least 10 million deaths (approximately) and a risk is &quot;existential&quot; if it causes the extinction of the human species or the collapse of human civilization<a data-anchor=\\\"true\\\" href=\\\"#ref1\\\"><sup>1</sup></a>. Publications that are relevant to this topic do not need to include the exact phrase &quot;existential risk&quot; or &quot;global catastrophic risk&quot;, but they should be about a risk that is <i>global</i> and <i>catastrophic</i> in scale.</p><p>Relevant publications for this topic should be tagged as relevant not only to existential risk or global catastrophic risk in general but also to the specific risks that they discuss (if there are any). However, we are also planning to do separate searches for each specific risk, using risk-specific search terms. The risks that we are focusing on are highlighted in yellow in Figure 1, below.</p><h3>Inclusion Criteria</h3><p>Publications that are relevant to this topic should <i>explicitly</i> be about the possibility, probability, impact, or management of existential or global catastrophic risks, as opposed to other aspects of these risks that are only implicitly relevant to this topic. For example, a publication about the probability of an asteroid impact that could kill all humans should be included, whereas a publication about some other aspect of an asteroid impact (e.g., the geological evidence of an asteroid impact in the past) should not be included. A publication about climate change should be included only if it is about <i>global catastrophic</i> climate change. Likewise, a publication about insurance against catastrophic risk should be included only if it is about <i>global</i> catastrophic risk (and loss of life, as opposed to financial loss), and a publication about disaster management should be included only if it is about a <i>global</i> disaster (as opposed to a global response to a local or regional disaster).</p><p>Alternatively, a more common-sense criterion is to ask whether or not a publication is really <i>about</i> existential risk or <i>about</i> global catastrophic risk, rather than something that is only tangentially related to such a risk. Many publications seem to make passing reference to things that are allegedly essential to human survival without actually discussing them as such.</p><p>Relevant publications should include at least one criterion from the following list.</p><ul><li>Discussion of existential risk or global catastrophic risk <i>per se</i> (explicit, not implicit)</li><li>Assessment of such a risk (e.g., the probability or impact of nuclear winter in the event of nuclear war)</li><li>Discussion of a strategy for managing such a risk (e.g., strategic food reserves to mitigate the risk of human extinction from catastrophes that destroy crops)</li><li>Comparison of these risks (e.g., the relative risk of human extinction from asteroid impact compared to artificial intelligence)</li><li>Philosophical discussion that is relevant to these risks (e.g., the &quot;value&quot; of the future lives that would be saved by preventing the extinction of the human species)</li></ul><p>Publications about artistic, fictional, or religious works should not be included.</p><h3>Figure 1: Categories of Risks</h3><p>These categories are defined by the cause of human extinction (or the cause of the end of human civilization as we know it). The Existential Risk Research Assessment is focused on ten of these fifteen categories (highlighted in yellow).</p><p></p><p></p><embed alt=\\\"classification_tree.jpg\\\" embedtype=\\\"image\\\" format=\\\"left\\\" id=\\\"6\\\"/><p></p><p></p><h3>Notes on the Categories of Risks</h3><h3><i>Ecological collapse</i></h3><h4><i>Climate change (non-toxic pollution)</i></h4><p>This category is about changes in biogeochemical cycles (e.g., the carbon cycle). These changes are not themselves toxic to humans (e.g., the carbon dioxide in the atmosphere is breathable), but the consequences of these changes (e.g., catastrophic climate change) could cause human extinction or the end of human civilization. This differentiates this category from &quot;toxic pollution&quot;. Publications about chlorofluorocarbons and holes in the ozone layer should also be in this category.</p><h4><i>Ecosystem failure</i></h4><p>This category is about the loss of ecosystem services (e.g., food production) through the loss of biodiversity beyond an ecological tipping point (e.g., the loss of soil fertility). It may be difficult to differentiate this category from &quot;climate change&quot; (climate regulation is also an ecosystem service), but publications about climate change as a consequence of burning fossil fuels (not biodiversity loss) should not be in this category. Publications about ecosystem-service failure as a consequence of another catastrophe (e.g., asteroid impact, nuclear winter, super-volcano, or climate change) should not be in this category unless they are about biodiversity loss (not crop failure through heat, drought, or lack of sunlight).</p><h4><i>Toxic pollution</i></h4><p>We are not focusing on this category, but it is about human extinction or the end of human civilization through exposure to toxic pollutants (not through biodiversity loss or climate change).</p><h3><i>Societal collapse</i></h3><h4><i>Behaviour change</i></h4><p>We are not focusing on this category, but it is about the end of human civilization through behaviour change. Publications about humans deciding not to reproduce or deciding not to live in a society would be in this category.</p><h4><i>Totalitarianism</i></h4><p>We are not focusing on this category, but it is about the end of human civilization through totalitarianism (e.g., permanent oppression). Publications about other forms of governance failure (e.g., &quot;the tragedy of the commons&quot;) should be in the category for the risk to which the governance failure is relevant (e.g., &quot;climate change&quot; or &quot;ecosystem failure&quot;).</p><h4><i>War or terrorism</i></h4><p>This category is about the end of human civilization through conflict. Publications about weapons of mass destruction (e.g., biological, chemical, or nuclear weapons) or their consequences (e.g., nuclear winter) should be in this category.</p><h3><i>Technological collapse</i></h3><h4><i>Artificial intelligence</i></h4><p>Publications about superintelligence should be in this category (but publications on lethal autonomous weapons could also be in &quot;war or terrorism&quot;).</p><h4><i>Biotechnology</i></h4><p>Publications about synthetic biology and genetic engineering should be in this category (e.g., CRISPR).</p><h4><i>Other science or technology</i></h4><p>Publications about physics accidents should be in this category (e.g., the Large Hadron Collider). Publications about geoengineering accidents should also be in this category (and possibly also in &quot;climate change&quot;). Publications about molecular nanotechnology should also be in this category (e.g., grey goo). Publications about transhumanism (through neuroscience) should also be in this category.</p><h4><i>System failure</i></h4><p>This category is about the end of human civilization through the failure of the technological systems upon which it depends (e.g., the electricity grid or the internet). Publications about the failure of food supply chains should be in this category.</p><h3><i>Non-anthropogenic risks</i></h3><h4><i>Alien intelligence</i></h4><p>We are not focusing on this category, but publications about alien superintelligence (as a counterpoint to artificial intelligence) would be in this category. Publications about non-intelligent alien life would be in &quot;biological disaster&quot;.</p><h4><i>Biological disaster</i></h4><p>Publications about (natural, non-engineered) pandemic diseases (e.g. ebola, influenza, or smallpox) should be in this category.</p><h4><i>Cosmic disaster</i></h4><p>Publications about asteroid impacts, gamma-ray bursts, solar flares, and other cosmic phenomena should be in this category.</p><h4><i>Geological disaster</i></h4><p>Publications about super-volcanoes should be in this category.</p><h4><i>Simulation shutdown</i></h4><p>We are not focusing on this category, but publications about the end of a simulated universe (e.g., &quot;the matrix&quot;) would be in this category.</p><h2>Search Strategy</h2><p>The search strategy for this topic is based on the &quot;Global Challenges Bibliography&quot; in Appendix 1 of <i>Global Challenges: 12 Risks that Threaten Human Civilization</i><a data-anchor=\\\"true\\\" href=\\\"#ref2\\\"><sup>2</sup></a>, which included publications up to 2013. We used the keywords that were reported in Appendix 1 to search the titles, abstracts, keywords, and references of publications in Scopus. We then compared our search results with the publications in Appendix 1. If a publication in Appendix 1 was not in the search results, but it was in Scopus, then we added keywords that would find this publication (unless there were no keywords that seemed specific enough to existential risk to justify their use). Using this extended set of keywords, we then searched Scopus again, and we continue to search Scopus<a data-anchor=\\\"true\\\" href=\\\"#ref3\\\"><sup>3</sup></a> regularly for new publications.</p><p>As noted in Appendix 1, the literature on specific risks (e.g., climate change) is &quot;too voluminous to catalogue&quot;, and this is one reason that we have limited this topic to general-interest publications<a data-anchor=\\\"true\\\" href=\\\"#ref4\\\"><sup>4</sup></a>. Another reason is that studying multiple risks at the same time should enable us to make comparisons between these risks, think about interactions between them, and suggest strategies for managing multiple risks.</p><h3><i>Search Terms</i></h3><p><b>Title-Abstract-Keywords:</b> &quot;catastrophic risk&quot; OR &quot;existential risk&quot; OR &quot;existential catastrophe&quot; OR &quot;global catastrophe&quot; OR &quot;human extinction&quot; OR &quot;infinite risk&quot; OR &quot;xrisk&quot; OR &quot;x-risk&quot; OR apocalypse OR doomsday OR doom OR &quot;extinction of human&quot; OR &quot;extinction of the human&quot; OR &quot;end of the world&quot; OR &quot;world&#x27;s end&quot; OR &quot;world ending&quot; OR &quot;end of civilization&quot; OR &quot;collapse of civilization&quot; OR &quot;survival of civilization&quot; OR &quot;survival of humanity&quot; OR &quot;human survival&quot; OR &quot;survival of human&quot; OR &quot;survival of the human&quot; OR &quot;global collapse&quot; OR &quot;historical collapse&quot; OR &quot;catastrophic collapse&quot; OR &quot;global disaster&quot; OR &quot;existential threat&quot; OR &quot;catastrophic harm&quot;</p><p>OR</p><p><b>References:</b> &quot;catastrophic risk&quot; OR &quot;existential risk&quot; OR &quot;existential catastrophe&quot; OR &quot;global catastrophe&quot; OR &quot;human extinction&quot; OR &quot;infinite risk&quot; OR &quot;xrisk&quot; OR &quot;x-risk&quot;</p><h2>Machine Learning</h2><p>We are using an artificial neural network (implemented in TensorFlow<a data-anchor=\\\"true\\\" href=\\\"#ref5\\\"><sup>5</sup></a>) to predict the relevance of publications that have not yet been assessed, based on the abstracts of publications that have been assessed (labelled as &quot;relevant&quot; or &quot;irrelevant&quot;). First, we exclude publications that do not have abstracts. Second, we randomly split these publications into a training set (80% of publications) and a test set (20% of publications). Third, we use the first 200 words of each abstract in the training set as the input into the neural network (200 is approximately the average number of words in these abstracts), and we use a &quot;convolution&quot; layer in the network to encode each of these words as a vector of numbers (&quot;word embedding&quot;), based on its relationship to the other words in the abstract. Fourth, we pass these word embeddings to a fully connected layer in the network. When this network is trained, we use it to predict the probability that each publication in the test set is relevant. We then generate three different models, by setting three different probability thresholds to control the trade-off between precision and recall. Please see <a href=\\\"/application/ml\\\">Machine Learning</a> for more information. We then use these models to predict the relevance of publications that have not yet been assessed by humans.</p><h2>Notes</h2><p><a data-id=\\\"ref1\\\" href=\\\"#ref1\\\" id=\\\"ref1\\\"><sup>1</sup></a> For a definition of global catastrophic risks and existential risks (which are a subset of global catastrophic risks), please see Bostrom, N., \\u0106irkovi\\u0107, M.M. (2008). <i>Global Catastrophic Risks</i>. Oxford University Press, Oxford.</p><p><a data-id=\\\"ref2\\\" href=\\\"#ref2\\\" id=\\\"ref2\\\"><sup>2</sup></a> Pamlin, D., Armstrong, S., Baum, S. (2015). <i>Global Challenges: 12 Risks that Threaten Human Civilization.</i> Global Challenges Foundation.</p><p><a data-id=\\\"ref3\\\" href=\\\"#ref3\\\" id=\\\"ref3\\\"><sup>3</sup></a> We plan to search additional databases as soon as possible.</p><p><a data-id=\\\"ref4\\\" href=\\\"#ref4\\\" id=\\\"ref4\\\"><sup>4</sup></a> By working together, we hope that the literature on specific risks will not prove to be &quot;too voluminous to catalogue&quot;, but we acknowledge that a catalogue would be of limited usefulness if it is too voluminous to be read (by humans).</p><p><a data-id=\\\"ref5\\\" href=\\\"#ref5\\\" id=\\\"ref5\\\"><sup>5</sup></a> For more information, please see G\\u00e9ron, A (2017). <i>Hands-On Machine Learning with Scikit-Learn and TensorFlow: Concepts, Tools, and Techniques to Build Intelligent Systems</i>. O&#x27;Reilly Media, Inc., Sebastopol, California.</p>\", \"id\": \"d75b4f25-70f3-45be-9ca0-c349b2389a23\"}]",
+    "date": "2020-03-07",
+    "feed_image": null
+  }
+},
+{
+  "model": "contentmanager.defaultpage",
+  "pk": 11,
+  "fields": {
+    "body": "[{\"type\": \"paragraph\", \"value\": \"<p>Thank you for your interest in The Existential Risk Research Assessment!</p><h2>Starting Your Assessment</h2><p>Click the link to the bibliography that you want to assess, which is in the sidebar on the right side of the screen (for example, the bibliography for &quot;Existential risk&quot;). If you are logged in, the sidebar will then show you the number of publications for this topic and the number of assessments that you have completed.</p><p>Click &quot;Your next assessment&quot; on the sidebar. You will then be shown a publication to assess. Each person is shown these publications in a random order, but your random order will stay the same from session to session. You do not need to assess all of these publications in one session.</p><h2>Making an Assessment</h2><p>Please see the inclusion criteria for each topic in the <a href=\\\"/methods\\\">Methods</a>. If you think that a publication meets these criteria (based on its title and abstract), then please assess it as &quot;relevant&quot; (tick the box for each topic to which it is relevant, and then click &quot;Save&quot;). If not, then please assess it as &quot;irrelevant&quot; (do not tick the box, and click &quot;Save&quot;). Many publications will be irrelevant (an expected consequence of an inclusive search strategy), and we would not be surprised if you assessed most publications as irrelevant.</p><p>You must click &quot;Save&quot;, even if you have not ticked a box. If you do not click &quot;Save&quot;, then we will not know that you have assessed the publication. After you have clicked &quot;Save&quot;, you will be shown the next unassessed publication in the random order that has been assigned to you.</p><p>If it is impossible to decide whether or not a publication meets the inclusion criteria (based on its title and abstract), it is probably better to either (1) not assess it (do not tick a box or click &quot;Reset&quot; and then click &quot;Pass&quot; without clicking &quot;Save&quot;) or else (2) assess it as relevant. We would rather be overly inclusive than overly exclusive. However, this process will be useless if every publication is conservatively assessed as relevant. Wherever possible, we need you to make judgements about whether or not a publication is relevant. Please try not to &quot;Pass&quot; on an assessment.</p><p>There is not a simple formula for &quot;relevant&quot; or &quot;irrelevant&quot;, and it is only with a foundation of human judgement that we will be able to build a complicated formula for &quot;relevant&quot; or &quot;irrelevant&quot; through machine learning. Please do your best to make reasonable assessments. We appreciate your time and your humanity!</p><h2>Stopping Your Assessment</h2><p>You are free to stop working on your assessment at any time, whether or not your sidebar thinks you are &quot;100% complete&quot;. There is no minimum number of publications that you must assess, but the more the better, and your help is much appreciated. You do not need to tell us that your assessment is complete. Simply stop working on it. There is no deadline, and you can restart your assessment at any time. We will use your assessment, as it is, when we train or retrain the machine-learning algorithm.</p><h2>The Art and Science of Assessment</h2><p>It is difficult to assess the relevance of some publications, not least because these assessments are based only on titles and abstracts. But there are also some publications that can quickly be assessed as relevant or irrelevant, based on the title alone. Most publications are somewhere between these two extremes. Please try to do your best, and know that others are also trying to do their best. This is part art and part science. If enough people assess enough publications, then we will know which publications are difficult to assess, because there will be disagreement between different assessments of the same publication. When training the machine-learning algorithm, we will think about what to do about publications with significant disagreement between different assessments.</p>\", \"id\": \"2160644d-097d-4299-a986-0660e98e4fdd\"}]",
+    "date": "2020-03-07",
+    "feed_image": null
+  }
+},
+{
+  "model": "contentmanager.defaultpage",
+  "pk": 12,
+  "fields": {
+    "body": "[{\"type\": \"paragraph\", \"value\": \"<p>To start or restart an assessment, click the link to the bibliography that you want to assess (e.g., &quot;Existential risk&quot;), on the right side of the screen. Before you start, please read the <a href=\\\"/instructions\\\">Assessment Instructions</a> and think carefully about the <a href=\\\"/methods\\\">Inclusion Criteria</a>.</p>\", \"id\": \"b3fc5cba-1281-46f0-b2e2-26437728fc9b\"}]",
+    "date": "2020-03-07",
+    "feed_image": null
+  }
+},
+{
+  "model": "contentmanager.defaultpage",
+  "pk": 13,
+  "fields": {
+    "body": "[{\"type\": \"paragraph\", \"value\": \"<p>We are based at the <a href=\\\"http://www.cser.org/\\\">Centre for the Study of Existential Risk</a> (CSER) at the University of Cambridge. Please <a href=\\\"/application/signup/\\\">sign up to our mailing list</a> to receive updates about new publications that are added to our bibliography.</p><p>If you would like to participate in <a href=\\\"/about/\\\">The Existential Risk Research Assessment</a>, or if you know a publication that should be included in our bibliography, please contact Gorm Shackelford (ges47@cam.ac.uk).</p>\", \"id\": \"1242f8f6-fe2f-4c29-86be-5cead13c5826\"}]",
+    "date": "2020-03-07",
+    "feed_image": null
+  }
+},
+{
+  "model": "contentmanager.homepage",
+  "pk": 7,
+  "fields": {
+    "body": "[{\"type\": \"row\", \"value\": {\"position\": \"left\", \"icon\": \"\", \"icon_colour\": \"\", \"content\": \"<h2>The Existential Risk Research Assessment (TERRA)</h2><p>Using crowdsourcing and machine learning, we produce an open-access bibliography of publications about existential risk and global catastrophic risk. Please see <a href=\\\"https://doi.org/10.1016/j.futures.2019.102508\\\">our publication in Futures</a> for more information.</p>\"}, \"id\": \"042cd676-dec3-4387-bd06-c7996ea9c743\"}, {\"type\": \"tagged_articles\", \"value\": {\"tag\": \"recent_publications\"}, \"id\": \"0ad6c948-2e02-43e0-b03d-f41966b0a9e7\"}, {\"type\": \"row\", \"value\": {\"position\": \"left\", \"icon\": \"\", \"icon_colour\": \"\", \"content\": \"<h2>Participate in TERRA</h2><p>To help us keep this bibliography up to date, please <a href=\\\"/application/signup\\\">sign up</a> and read the <a href=\\\"/methods/\\\">methods.</a> You can also download the bibliography from this website.</p>\"}, \"id\": \"313d5e30-4de2-4eaf-9b02-602c4e3db40c\"}]"
+  }
+},
+{
+  "model": "contentmanager.homepagecarouselitem",
+  "pk": 5,
+  "fields": {
+    "sort_order": 0,
+    "link_external": "",
+    "link_page": 8,
+    "link_document": null,
+    "image": 7,
+    "embed_url": "",
+    "caption": "The Existential Risk Research Assessment (TERRA)",
+    "description": "A semi-automated system for finding relevant research in the field of existential risk",
+    "page": 7
+  }
+},
+{
+  "model": "taggit.tag",
+  "pk": 1,
+  "fields": {
+    "name": "news",
+    "slug": "news"
+  }
+},
+{
+  "model": "taggit.tag",
+  "pk": 2,
+  "fields": {
+    "name": "publications",
+    "slug": "publications"
+  }
+},
+{
+  "model": "taggit.tag",
+  "pk": 3,
+  "fields": {
+    "name": "technology",
+    "slug": "technology"
+  }
+},
+{
+  "model": "taggit.tag",
+  "pk": 4,
+  "fields": {
+    "name": "vision",
+    "slug": "vision"
+  }
+},
+{
+  "model": "wagtailcore.collection",
+  "pk": 1,
+  "fields": {
+    "path": "0001",
+    "depth": 1,
+    "numchild": 0,
+    "name": "Root"
+  }
+},
+{
+  "model": "wagtailcore.groupcollectionpermission",
+  "pk": 1,
+  "fields": {
+    "group": [
+      "Editors"
+    ],
+    "collection": 1,
+    "permission": [
+      "add_image",
+      "wagtailimages",
+      "image"
+    ]
+  }
+},
+{
+  "model": "wagtailcore.groupcollectionpermission",
+  "pk": 2,
+  "fields": {
+    "group": [
+      "Moderators"
+    ],
+    "collection": 1,
+    "permission": [
+      "add_image",
+      "wagtailimages",
+      "image"
+    ]
+  }
+},
+{
+  "model": "wagtailcore.groupcollectionpermission",
+  "pk": 3,
+  "fields": {
+    "group": [
+      "Editors"
+    ],
+    "collection": 1,
+    "permission": [
+      "change_image",
+      "wagtailimages",
+      "image"
+    ]
+  }
+},
+{
+  "model": "wagtailcore.groupcollectionpermission",
+  "pk": 4,
+  "fields": {
+    "group": [
+      "Moderators"
+    ],
+    "collection": 1,
+    "permission": [
+      "change_image",
+      "wagtailimages",
+      "image"
+    ]
+  }
+},
+{
+  "model": "wagtailcore.groupcollectionpermission",
+  "pk": 5,
+  "fields": {
+    "group": [
+      "Editors"
+    ],
+    "collection": 1,
+    "permission": [
+      "add_document",
+      "wagtaildocs",
+      "document"
+    ]
+  }
+},
+{
+  "model": "wagtailcore.groupcollectionpermission",
+  "pk": 6,
+  "fields": {
+    "group": [
+      "Moderators"
+    ],
+    "collection": 1,
+    "permission": [
+      "add_document",
+      "wagtaildocs",
+      "document"
+    ]
+  }
+},
+{
+  "model": "wagtailcore.groupcollectionpermission",
+  "pk": 7,
+  "fields": {
+    "group": [
+      "Editors"
+    ],
+    "collection": 1,
+    "permission": [
+      "change_document",
+      "wagtaildocs",
+      "document"
+    ]
+  }
+},
+{
+  "model": "wagtailcore.groupcollectionpermission",
+  "pk": 8,
+  "fields": {
+    "group": [
+      "Moderators"
+    ],
+    "collection": 1,
+    "permission": [
+      "change_document",
+      "wagtaildocs",
+      "document"
+    ]
+  }
+},
+{
+  "model": "wagtailcore.grouppagepermission",
+  "pk": 1,
+  "fields": {
+    "group": [
+      "Moderators"
+    ],
+    "page": 1,
+    "permission_type": "add"
+  }
+},
+{
+  "model": "wagtailcore.grouppagepermission",
+  "pk": 2,
+  "fields": {
+    "group": [
+      "Moderators"
+    ],
+    "page": 1,
+    "permission_type": "edit"
+  }
+},
+{
+  "model": "wagtailcore.grouppagepermission",
+  "pk": 3,
+  "fields": {
+    "group": [
+      "Moderators"
+    ],
+    "page": 1,
+    "permission_type": "publish"
+  }
+},
+{
+  "model": "wagtailcore.grouppagepermission",
+  "pk": 4,
+  "fields": {
+    "group": [
+      "Editors"
+    ],
+    "page": 1,
+    "permission_type": "add"
+  }
+},
+{
+  "model": "wagtailcore.grouppagepermission",
+  "pk": 5,
+  "fields": {
+    "group": [
+      "Editors"
+    ],
+    "page": 1,
+    "permission_type": "edit"
+  }
+},
+{
+  "model": "wagtailcore.grouppagepermission",
+  "pk": 6,
+  "fields": {
+    "group": [
+      "Moderators"
+    ],
+    "page": 1,
+    "permission_type": "lock"
+  }
+},
+{
+  "model": "wagtailcore.page",
+  "pk": 1,
+  "fields": {
+    "path": "0001",
+    "depth": 1,
+    "numchild": 1,
+    "title": "Root",
+    "draft_title": "Root",
+    "slug": "root",
+    "content_type": [
+      "wagtailcore",
+      "page"
+    ],
+    "live": true,
+    "has_unpublished_changes": false,
+    "url_path": "/",
+    "owner": null,
+    "seo_title": "",
+    "show_in_menus": false,
+    "search_description": "",
+    "go_live_at": null,
+    "expire_at": null,
+    "expired": false,
+    "locked": false,
+    "first_published_at": null,
+    "last_published_at": null,
+    "latest_revision_created_at": null,
+    "live_revision": null
+  }
+},
+{
+  "model": "wagtailcore.page",
+  "pk": 7,
+  "fields": {
+    "path": "00010002",
+    "depth": 2,
+    "numchild": 5,
+    "title": "The Existential Risk Research Network",
+    "draft_title": "The Existential Risk Research Network",
+    "slug": "existential-risk-research-network",
+    "content_type": [
+      "contentmanager",
+      "homepage"
+    ],
+    "live": true,
+    "has_unpublished_changes": false,
+    "url_path": "/existential-risk-research-network/",
+    "owner": null,
+    "seo_title": "",
+    "show_in_menus": true,
+    "search_description": "",
+    "go_live_at": null,
+    "expire_at": null,
+    "expired": false,
+    "locked": false,
+    "first_published_at": "2020-03-07T10:23:29.849Z",
+    "last_published_at": "2020-03-14T18:19:34.699Z",
+    "latest_revision_created_at": null,
+    "live_revision": null
+  }
+},
+{
+  "model": "wagtailcore.page",
+  "pk": 8,
+  "fields": {
+    "path": "000100020001",
+    "depth": 3,
+    "numchild": 0,
+    "title": "The Existential Risk Research Assessment (TERRA)",
+    "draft_title": "The Existential Risk Research Assessment (TERRA)",
+    "slug": "about",
+    "content_type": [
+      "contentmanager",
+      "defaultpage"
+    ],
+    "live": true,
+    "has_unpublished_changes": false,
+    "url_path": "/existential-risk-research-network/about/",
+    "owner": null,
+    "seo_title": "",
+    "show_in_menus": true,
+    "search_description": "",
+    "go_live_at": null,
+    "expire_at": null,
+    "expired": false,
+    "locked": false,
+    "first_published_at": "2020-03-07T10:27:17.429Z",
+    "last_published_at": "2020-03-10T01:35:40.585Z",
+    "latest_revision_created_at": null,
+    "live_revision": null
+  }
+},
+{
+  "model": "wagtailcore.page",
+  "pk": 9,
+  "fields": {
+    "path": "000100020002",
+    "depth": 3,
+    "numchild": 0,
+    "title": "Methods",
+    "draft_title": "Methods",
+    "slug": "methods",
+    "content_type": [
+      "contentmanager",
+      "defaultpage"
+    ],
+    "live": true,
+    "has_unpublished_changes": false,
+    "url_path": "/existential-risk-research-network/methods/",
+    "owner": null,
+    "seo_title": "",
+    "show_in_menus": true,
+    "search_description": "",
+    "go_live_at": null,
+    "expire_at": null,
+    "expired": false,
+    "locked": false,
+    "first_published_at": "2020-03-07T10:28:20.680Z",
+    "last_published_at": "2020-03-14T18:14:41.741Z",
+    "latest_revision_created_at": null,
+    "live_revision": null
+  }
+},
+{
+  "model": "wagtailcore.page",
+  "pk": 11,
+  "fields": {
+    "path": "000100020004",
+    "depth": 3,
+    "numchild": 0,
+    "title": "Assessment Instructions",
+    "draft_title": "Assessment Instructions",
+    "slug": "instructions",
+    "content_type": [
+      "contentmanager",
+      "defaultpage"
+    ],
+    "live": true,
+    "has_unpublished_changes": false,
+    "url_path": "/existential-risk-research-network/instructions/",
+    "owner": null,
+    "seo_title": "",
+    "show_in_menus": false,
+    "search_description": "",
+    "go_live_at": null,
+    "expire_at": null,
+    "expired": false,
+    "locked": false,
+    "first_published_at": "2020-03-07T10:31:54.864Z",
+    "last_published_at": "2020-03-10T00:58:31.927Z",
+    "latest_revision_created_at": null,
+    "live_revision": null
+  }
+},
+{
+  "model": "wagtailcore.page",
+  "pk": 12,
+  "fields": {
+    "path": "000100020005",
+    "depth": 3,
+    "numchild": 0,
+    "title": "Your Assessments",
+    "draft_title": "Your Assessments",
+    "slug": "your-assessments",
+    "content_type": [
+      "contentmanager",
+      "defaultpage"
+    ],
+    "live": true,
+    "has_unpublished_changes": false,
+    "url_path": "/existential-risk-research-network/your-assessments/",
+    "owner": null,
+    "seo_title": "",
+    "show_in_menus": true,
+    "search_description": "",
+    "go_live_at": null,
+    "expire_at": null,
+    "expired": false,
+    "locked": false,
+    "first_published_at": "2020-03-07T10:33:05.212Z",
+    "last_published_at": "2020-03-10T00:57:01.718Z",
+    "latest_revision_created_at": null,
+    "live_revision": null
+  }
+},
+{
+  "model": "wagtailcore.page",
+  "pk": 13,
+  "fields": {
+    "path": "000100020006",
+    "depth": 3,
+    "numchild": 0,
+    "title": "Contact Us",
+    "draft_title": "Contact Us",
+    "slug": "contact",
+    "content_type": [
+      "contentmanager",
+      "defaultpage"
+    ],
+    "live": true,
+    "has_unpublished_changes": false,
+    "url_path": "/existential-risk-research-network/contact/",
+    "owner": null,
+    "seo_title": "",
+    "show_in_menus": true,
+    "search_description": "",
+    "go_live_at": null,
+    "expire_at": null,
+    "expired": false,
+    "locked": false,
+    "first_published_at": "2020-03-07T10:35:06.429Z",
+    "last_published_at": "2020-03-10T08:33:55.077Z",
+    "latest_revision_created_at": null,
+    "live_revision": null
+  }
+},
+{
+  "model": "wagtailcore.site",
+  "pk": 1,
+  "fields": {
+    "hostname": "localhost",
+    "port": 80,
+    "site_name": null,
+    "root_page": 7,
+    "is_default_site": true
+  }
+},
+{
+  "model": "wagtailimages.image",
+  "pk": 6,
+  "fields": {
+    "collection": 1,
+    "title": "classification_tree.jpg",
+    "file": "original_images/classification_tree.jpg",
+    "width": 2014,
+    "height": 2400,
+    "created_at": "2020-03-10T01:31:50.728Z",
+    "uploaded_by_user": null,
+    "focal_point_x": null,
+    "focal_point_y": null,
+    "focal_point_width": null,
+    "focal_point_height": null,
+    "file_size": 284246,
+    "file_hash": "d4604f9245e708232c32499432dcf5668e7d97ef"
+  }
+},
+{
+  "model": "wagtailimages.image",
+  "pk": 7,
+  "fields": {
+    "collection": 1,
+    "title": "drought.jpg",
+    "file": "original_images/drought.jpg",
+    "width": 1200,
+    "height": 800,
+    "created_at": "2020-03-10T02:17:44.851Z",
+    "uploaded_by_user": null,
+    "focal_point_x": null,
+    "focal_point_y": null,
+    "focal_point_width": null,
+    "focal_point_height": null,
+    "file_size": 450202,
+    "file_hash": "ebf0cd2baa02f52b6fff743fd0a30f5f5d212b03"
+  }
+},
+{
+  "model": "wagtailimages.rendition",
+  "pk": 13,
+  "fields": {
+    "filter_spec": "max-800x600",
+    "file": "images/classification_tree.max-800x600.jpg",
+    "width": 503,
+    "height": 600,
+    "focal_point_key": "",
+    "image": 6
+  }
+},
+{
+  "model": "wagtailimages.rendition",
+  "pk": 14,
+  "fields": {
+    "filter_spec": "width-800",
+    "file": "images/classification_tree.width-800.jpg",
+    "width": 800,
+    "height": 953,
+    "focal_point_key": "",
+    "image": 6
+  }
+},
+{
+  "model": "wagtailimages.rendition",
+  "pk": 15,
+  "fields": {
+    "filter_spec": "max-165x165",
+    "file": "images/classification_tree.max-165x165.jpg",
+    "width": 138,
+    "height": 165,
+    "focal_point_key": "",
+    "image": 6
+  }
+},
+{
+  "model": "wagtailimages.rendition",
+  "pk": 16,
+  "fields": {
+    "filter_spec": "width-500",
+    "file": "images/classification_tree.width-500.jpg",
+    "width": 500,
+    "height": 595,
+    "focal_point_key": "",
+    "image": 6
+  }
+},
+{
+  "model": "wagtailimages.rendition",
+  "pk": 27,
+  "fields": {
+    "filter_spec": "max-165x165",
+    "file": "images/drought.max-165x165.jpg",
+    "width": 165,
+    "height": 110,
+    "focal_point_key": "",
+    "image": 7
+  }
+},
+{
+  "model": "wagtailimages.rendition",
+  "pk": 28,
+  "fields": {
+    "filter_spec": "width-1000",
+    "file": "images/drought.width-1000.jpg",
+    "width": 1000,
+    "height": 666,
+    "focal_point_key": "",
+    "image": 7
+  }
+},
+{
+  "model": "wagtailmenus.mainmenu",
+  "pk": 1,
+  "fields": {
+    "site": [
+      "localhost",
+      80
+    ],
+    "max_levels": 2,
+    "use_specific": 1
+  }
+},
+{
+  "model": "wagtailmenus.mainmenuitem",
+  "pk": 2,
+  "fields": {
+    "sort_order": 0,
+    "link_page": 8,
+    "link_url": null,
+    "url_append": "",
+    "handle": "",
+    "link_text": "About",
+    "allow_subnav": true,
+    "menu": 1
+  }
+},
+{
+  "model": "wagtailmenus.mainmenuitem",
+  "pk": 3,
+  "fields": {
+    "sort_order": 1,
+    "link_page": 9,
+    "link_url": null,
+    "url_append": "",
+    "handle": "",
+    "link_text": "",
+    "allow_subnav": true,
+    "menu": 1
+  }
+},
+{
+  "model": "wagtailmenus.mainmenuitem",
+  "pk": 6,
+  "fields": {
+    "sort_order": 4,
+    "link_page": 13,
+    "link_url": null,
+    "url_append": "",
+    "handle": "",
+    "link_text": "Contact",
+    "allow_subnav": true,
+    "menu": 1
+  }
+}
+]

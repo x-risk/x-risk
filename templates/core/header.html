@@ -1,0 +1,17 @@
+{% load menu_tags %}
+
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/">TERRA</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+
+		    {% main_menu max_levels=3 template="menus/bootstrap3/main_menu_dropdown.html" sub_menu_template="menus/bootstrap3/sub_menu_dropdown.html" %}
+
+        </div>
+    </div>
+</nav>

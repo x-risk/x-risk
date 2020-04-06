@@ -1,0 +1,51 @@
+<div class="card bg-info">
+	<div class="card-body">
+	  <h5 class="card-category card-category-social">
+		<i class="fa fa-book"></i> Manually-curated Bibliography
+	  </h5>
+	  <p>
+		<a class="btn btn-round btn-block btn-info" href="{% url 'topics' slug='existential-risk' %}">Existential risk</a>
+	  </p>
+	  <div class="card-title">
+	   Download Existential Risk
+		<b>(<a href="{% url 'download_csv' slug='existential-risk' %}">CSV</a> | <a href="{% url 'download_ris' slug='existential-risk' %}">RIS</a>)</b>
+	  </div>
+	<p>
+	  <form spellcheck="false" autocomplete="off" class="inline my-2 my-lg-0" action="/application/search/existential-risk" method="get">
+		<div class="input-group form-group">
+			<label for="search_bibliography" class="bmd-label-floating text-white">Search bibliography</label>
+			<input class="form-control text-white placeholder-white" autocomplete="off" id="search_bibliography" type="text" name="q">
+			<div class="search-button-container">
+				<button class="search-button-button btn btn-info btn-round text-center" alt="Search" title="Search" type="submit">				
+					<i class="material-icons">search</i>
+				</button>
+			</div>
+		</div>
+	  </form>
+	</p>
+	  <p class="card-description">
+		Other bibliographies are to be announced for specific x-risks, e.g., artificial intelligence or asteroid impact.
+	  </p>
+	</div>
+</div>
+
+<div class="card bg-success">
+	<div class="card-body">
+	  <h5 class="card-category card-category-social">
+		<i class="fa fa-laptop"></i> ML Bibliography
+	  </h5>
+	  <p>Publications predicted to be relevant by our <a class="card-title" href="{% url 'ml' %}"><b>Machine Learning</b></a> (ML) model, but not yet assessed by humans and thus not yet in the non-ML bibliography</p>
+	  <h3 class="card-title">Existential risk</h3>
+		<div class="card-title">
+			<b>
+				<p><a href="{% url 'topics' slug='existential-risk' state='low_recall' %}">Low recall <i class="material-icons">link</i></a> 
+					(<a href="{% url 'download_csv' slug='existential-risk' state='low_recall' %}">CSV</a> | <a href="{% url 'download_ris' slug='existential-risk' state='low_recall' %}">RIS</a>)</p>
+				<p><a href="{% url 'topics' slug='existential-risk' state='medium_recall' %}">Medium recall <i class="material-icons">link</i></a> 
+					(<a href="{% url 'download_csv' slug='existential-risk' state='medium_recall' %}">CSV</a> | <a href="{% url 'download_ris' slug='existential-risk' state='medium_recall' %}">RIS</a>)</p>
+				<p><a href="{% url 'topics' slug='existential-risk' state='high_recall' %}">High recall <i class="material-icons">link</i></a> 
+					(<a href="{% url 'download_csv' slug='existential-risk' state='high_recall' %}">CSV</a> | <a href="{% url 'download_ris' slug='existential-risk' state='high_recall' %}">RIS</a>)</p>
+			</b>
+		</div>
+
+	</div>
+</div>
