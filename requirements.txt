@@ -10,7 +10,7 @@ django-el-pagination==3.1.0
 markdown>=2.6.8
 mysqlclient
 wagtail-table-block
-requests==2.18.1
+requests==2.20.0
 
 nltk==3.2.4
 numpy==1.13.3
