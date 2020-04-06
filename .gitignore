@@ -31,4 +31,3 @@ abstracts_to_csv.py
 /xrisk/whoosh_index
 secret.txt
 /.vscode
-cron_daily.sh
