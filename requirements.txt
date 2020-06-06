@@ -1,4 +1,4 @@
-Django==1.11.28
+Django==1.11.29
 django-haystack==2.8.1
 django-debug-toolbar==1.8
 django-widget-tweaks
