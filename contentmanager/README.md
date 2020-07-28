@@ -13,7 +13,8 @@ The **X-Risk CMS** system, including a number of X-Risk content pages, will be i
 ## Logging in
 To log into the **X-Risk CMS** of your TERRA website, go to:  
 
-http://yourdomain.com/cms
+https://yourdomain.com/cms
+
 
 Where `yourdomain.com` is the website where you have installed TERRA. Enter your *superuser* username and password to access the CMS content pages. 
 
