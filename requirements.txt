@@ -3,7 +3,7 @@ django-haystack==2.8.1
 django-debug-toolbar==1.8
 django-widget-tweaks
 Whoosh==2.7.4
-wagtail==2.3
+wagtail==2.11.8
 wagtailcodeblock==1.15.0.0
 wagtailmenus==2.8
 django-el-pagination==3.1.0
