@@ -13,7 +13,7 @@ wagtail-table-block
 requests==2.18.1
 
 nltk==3.2.4
-numpy==1.13.3
+numpy==1.22.0
 pandas==0.20.3
 RISparser==0.4.2
 scikit-learn==0.18.2
