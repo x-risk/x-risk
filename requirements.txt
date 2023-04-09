@@ -30,5 +30,5 @@ scikit-learn==1.0.2
 tensorflow>=2.11.1
 tensorflow-tensorboard==0.1.8
 tflearn==0.3.2
-html5lib==0.9999999
+html5lib==0.999999999
 h5py
