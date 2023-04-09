@@ -289,7 +289,7 @@ https://github.com/x-risk/x-risk/tree/master/contentmanager
 ## Copyright
 
 TERRA Application  
-Copright (c) 2018 Gorm Shackleford  
+Copyright (c) 2018 Gorm Shackleford  
 Released under MIT License
 
 Material Kit Template  
